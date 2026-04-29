@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Dashboard: Academic Analysis & O-NET Alignment 2566-2568</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #f8fafc; }
+        .glass-card { background: white; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; }
+        .badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+        .idea-card { transition: all 0.3s ease; border: 1px solid transparent; }
+        .idea-card:hover { transform: translateY(-5px); border-color: #6366f1; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .stat-value { font-size: 2.25rem; font-weight: 800; line-height: 1; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-br from-indigo-900 via-blue-800 to-blue-900 rounded-3xl p-8 mb-10 text-white shadow-2xl relative overflow-hidden">
+            <div class="relative z-10">
+                <h1 class="text-3xl md:text-4xl font-bold">ระบบวิเคราะห์ความสอดคล้องผลสัมฤทธิ์และ O-NET</h1>
+                <p class="opacity-80 mt-2 text-lg">ข้อมูลบูรณาการและบทวิเคราะห์เชิงคุณภาพ 2566-2568 | โรงเรียนจตุรภูมิพิทยาคาร</p>
+                <div class="flex flex-wrap gap-4 mt-6">
+                    <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-lg text-center min-w-[140px]">
+                        <span class="block text-xs opacity-70">เป้าหมายสถานศึกษา</span>
+                        <span class="text-xl font-bold">ร้อยละ 65.00</span>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-lg text-center border border-white/30 min-w-[140px]">
+                        <span class="block text-xs opacity-70">ดัชนีความสอดคล้อง</span>
+                        <span class="text-xl font-bold text-green-300">ความสอดคล้องสูง</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW! Section: Annual Total Average (8 Subject Groups) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="glass-card bg-white border-l-8 border-slate-300">
+                <p class="text-sm font-bold text-gray-500 uppercase">ค่าเฉลี่ยรวม 8 กลุ่มสาระฯ 2566</p>
+                <div class="mt-2 flex items-baseline gap-2">
+                    <span class="stat-value text-slate-600" id="avg66">--</span>
+                    <span class="text-lg font-bold text-slate-400">%</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-2">ฐานข้อมูลปีเริ่มต้น</p>
+            </div>
+            <div class="glass-card bg-white border-l-8 border-indigo-300">
+                <p class="text-sm font-bold text-gray-500 uppercase">ค่าเฉลี่ยรวม 8 กลุ่มสาระฯ 2567</p>
+                <div class="mt-2 flex items-baseline gap-2">
+                    <span class="stat-value text-indigo-600" id="avg67">--</span>
+                    <span class="text-lg font-bold text-indigo-400">%</span>
+                </div>
+                <p class="text-xs text-green-500 mt-2 font-bold" id="diff67">↑ --</p>
+            </div>
+            <div class="glass-card bg-blue-50 border-l-8 border-blue-600">
+                <p class="text-sm font-bold text-blue-800 uppercase">ค่าเฉลี่ยรวม 8 กลุ่มสาระฯ 2568</p>
+                <div class="mt-2 flex items-baseline gap-2">
+                    <span class="stat-value text-blue-700" id="avg68">--</span>
+                    <span class="text-lg font-bold text-blue-500">%</span>
+                </div>
+                <p class="text-xs text-blue-600 mt-2 font-bold" id="diff68">↑ --</p>
+            </div>
+        </div>
+
+        <!-- Section 1: GPA Development Trend -->
+        <div class="glass-card mb-10">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                <span class="bg-blue-100 p-2 rounded-lg mr-3 text-blue-600">📈</span> แนวโน้มการพัฒนาต่อเนื่อง 3 ปี (GPA รายวิชา)
+            </h2>
+            <div class="h-[350px]">
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Section 2: Alignment Analysis -->
+        <div class="glass-card mb-10 border-2 border-indigo-100 shadow-lg">
+            <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
+                <span class="bg-indigo-100 p-2 rounded-lg mr-3 text-indigo-600">⚖️</span> วิเคราะห์ความสอดคล้อง: GPA vs O-NET (ม.6 ปี 2567)
+            </h2>
+            <p class="text-sm text-gray-500 mb-6">เปรียบเทียบร้อยละผลสัมฤทธิ์ (เกรด 3 ขึ้นไป) กับคะแนนเฉลี่ย O-NET เพื่อตรวจสอบมาตรฐานการวัดผล</p>
+            <div class="h-[400px]">
+                <canvas id="alignmentChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Section 3: O-NET Deep Dive -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
+            <div class="glass-card border-t-4 border-blue-500">
+                <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="bg-blue-100 p-2 rounded-lg mr-3 text-blue-600">🎓</span> O-NET ม.3 (2566 vs 2567)
+                </h2>
+                <div class="h-[300px]">
+                    <canvas id="onetM3Chart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card border-t-4 border-green-500">
+                <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="bg-green-100 p-2 rounded-lg mr-3 text-green-600">🎓</span> O-NET ม.6 (2566 vs 2567)
+                </h2>
+                <div class="h-[300px]">
+                    <canvas id="onetM6Chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: INNOVATION STRATEGY -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <span class="bg-yellow-100 p-2 rounded-lg mr-3 text-yellow-600">💡</span> 5 กลยุทธ์นวัตกรรมยกระดับผลสัมฤทธิ์
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-card idea-card bg-gradient-to-br from-white to-blue-50">
+                    <div class="text-3xl mb-4">🤖</div>
+                    <h3 class="font-bold text-blue-900 mb-2">AI-Driven Remediation</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">ใช้ระบบวิเคราะห์จุดบอดรายบุคคลรายสัปดาห์ ครูซ่อมเสริมเฉพาะจุด (Micro-teaching)</p>
+                </div>
+                <div class="glass-card idea-card bg-gradient-to-br from-white to-purple-50">
+                    <div class="text-3xl mb-4">🏆</div>
+                    <h3 class="font-bold text-purple-900 mb-2">Academic Peer Mentoring</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">ใช้พี่ ม.6 ที่ O-NET สูงกว่าค่าเฉลี่ยประเทศ มาเป็นติวเตอร์ช่วยน้อง ม.3</p>
+                </div>
+                <div class="glass-card idea-card bg-gradient-to-br from-white to-green-50">
+                    <div class="text-3xl mb-4">🎮</div>
+                    <h3 class="font-bold text-green-900 mb-2">Gamified O-NET Bootcamp</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">เปลี่ยนการติวเป็นภารกิจสะสมแต้มรายห้องเรียนเพื่อสร้างแรงจูงใจเชิงบวก</p>
+                </div>
+                <div class="glass-card idea-card bg-gradient-to-br from-white to-amber-50">
+                    <div class="text-3xl mb-4">📊</div>
+                    <h3 class="font-bold text-amber-900 mb-2">Mock Exam Simulation</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">ปรับปลายภาคเป็นข้อสอบมาตรฐานชาติ 60% เพื่อสร้างความคุ้นชินสนามสอบ</p>
+                </div>
+                <div class="glass-card idea-card bg-gradient-to-br from-white to-rose-50">
+                    <div class="text-3xl mb-4">🤝</div>
+                    <h3 class="font-bold text-rose-900 mb-2">Hybrid Resource Hub</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">คลังคลิปติวตัวชี้วัดต้องรู้ (Must know) เข้าถึงได้ 24 ชม. ผ่านระบบ Cloud</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center text-gray-400 text-xs italic">
+            Strategic Dashboard & Innovation Plan | คำนวณค่าเฉลี่ยรวมอัตโนมัติจาก 8 กลุ่มสาระฯ
+        </div>
+    </div>
+
+    <script>
+        const subjectLabels = ['ภาษาไทย', 'คณิตศาสตร์', 'วิทยาศาสตร์ฯ', 'สังคมศึกษาฯ', 'สุขศึกษาฯ', 'ศิลปะ', 'การงานอาชีพ', 'ภาษาต่างประเทศ'];
+        const colors = ['#f59e0b', '#ef4444', '#3b82f6', '#8b5cf6', '#10b981', '#ec4899', '#06b6d4', '#6366f1'];
+        
+        const data66 = [62.57, 37.09, 55.75, 78.38, 81.57, 59.23, 73.90, 61.34];
+        const data67 = [58.41, 43.44, 68.89, 83.69, 86.87, 67.67, 72.70, 66.51];
+        const data68 = [64.46, 49.39, 76.10, 81.37, 89.06, 77.23, 79.59, 75.70];
+
+        // Calculate Averages
+        const calcAvg = (arr) => (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(2);
+        
+        const avg66 = calcAvg(data66);
+        const avg67 = calcAvg(data67);
+        const avg68 = calcAvg(data68);
+
+        // Display Averages
+        document.getElementById('avg66').innerText = avg66;
+        document.getElementById('avg67').innerText = avg67;
+        document.getElementById('avg68').innerText = avg68;
+
+        // Display Differences
+        document.getElementById('diff67').innerText = `↑ พัฒนาขึ้น ${(avg67 - avg66).toFixed(2)}%`;
+        document.getElementById('diff68').innerText = `↑ พัฒนาขึ้น ${(avg68 - avg67).toFixed(2)}%`;
+
+        const onetM3_School67 = [48.52, 25.33, 35.72, 29.11];
+        const onetM3_National67 = [48.93, 26.53, 34.22, 30.93];
+
+        const onetM6_School67 = [45.95, 22.65, 31.61, 43.34, 29.22];
+        const onetM6_National67 = [42.21, 21.76, 28.95, 35.77, 30.61];
+
+        // Charts initialization
+        new Chart(document.getElementById('lineChart'), {
+            type: 'line',
+            data: {
+                labels: ['2566', '2567', '2568'],
+                datasets: subjectLabels.map((label, i) => ({
+                    label: label,
+                    data: [data66[i], data67[i], data68[i]],
+                    borderColor: colors[i],
+                    backgroundColor: colors[i] + '20',
+                    borderWidth: 2.5,
+                    tension: 0.3
+                }))
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+
+        new Chart(document.getElementById('alignmentChart'), {
+            type: 'bar',
+            data: {
+                labels: ['ภาษาไทย', 'คณิตศาสตร์', 'วิทยาศาสตร์', 'สังคมศึกษา', 'ภาษาอังกฤษ'],
+                datasets: [
+                    { label: 'ร้อยละ GPA เกรด 3 ขึ้นไป (ม.6)', data: [58.41, 43.44, 68.89, 83.69, 66.51], backgroundColor: '#6366f1CC', borderRadius: 5 },
+                    { label: 'คะแนนเฉลี่ย O-NET (ม.6)', data: [45.95, 22.65, 31.61, 43.34, 29.22], type: 'line', borderColor: '#ef4444', backgroundColor: '#ef4444', borderWidth: 3, pointRadius: 6 }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+
+        new Chart(document.getElementById('onetM3Chart'), {
+            type: 'bar',
+            data: {
+                labels: ['ภาษาไทย', 'คณิตศาสตร์', 'วิทยาศาสตร์', 'ภาษาอังกฤษ'],
+                datasets: [
+                    { label: 'โรงเรียน 67', data: onetM3_School67, backgroundColor: '#3b82f6' },
+                    { label: 'ประเทศ 67', data: onetM3_National67, backgroundColor: '#cbd5e1' }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+
+        new Chart(document.getElementById('onetM6Chart'), {
+            type: 'bar',
+            data: {
+                labels: ['ภาษาไทย', 'คณิตศาสตร์', 'วิทยาศาสตร์', 'สังคมศึกษา', 'ภาษาอังกฤษ'],
+                datasets: [
+                    { label: 'โรงเรียน 67', data: onetM6_School67, backgroundColor: '#10b981' },
+                    { label: 'ประเทศ 67', data: onetM6_National67, backgroundColor: '#cbd5e1' }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+    </script>
+</body>
+</html>
