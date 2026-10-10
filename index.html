@@ -1,232 +1,383 @@
 <!DOCTYPE html>
+
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Dashboard: Academic Analysis & O-NET Alignment 2566-2568</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Sarabun', sans-serif; background-color: #f8fafc; }
-        .glass-card { background: white; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; }
-        .badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
-        .idea-card { transition: all 0.3s ease; border: 1px solid transparent; }
-        .idea-card:hover { transform: translateY(-5px); border-color: #6366f1; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-        .stat-value { font-size: 2.25rem; font-weight: 800; line-height: 1; }
-    </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="เว็บไซต์ช่วยสร้างชุดเอกสารจัดซื้อ ว804 พร้อมรายงานสรุปผล ใบติดใบเสร็จรับเงิน และตรวจวันทำการ โดยไม่จัดเก็บข้อมูล" name="description"/>
+<meta content="no-referrer" name="referrer"/>
+<title>Smart Procurement PDF 2.3 | โรงเรียนจตุรภูมิพิทยาคาร</title>
+<style>
+  :root{--navy:#102a48;--dark:#142d4b;--blue:#2764cd;--sky:#eaf2ff;--paper:#f4f7fb;--line:#dce4ed;--muted:#62758a;--green:#12765a;--red:#ad3843}
+  *{box-sizing:border-box}body{margin:0;background:#eef3f8;color:#18314e;font-family:'Sarabun','TH Sarabun New','TH Sarabun PSK','Noto Sans Thai',Tahoma,sans-serif;font-size:16px}
+  button,input,select,textarea{font:inherit}button{cursor:pointer}input,textarea,select{width:100%;border:1px solid #c7d4e2;border-radius:11px;padding:10px 12px;background:white;color:var(--dark);min-height:43px}textarea{min-height:85px;resize:vertical}input:focus,textarea:focus,select:focus{outline:2px solid #b3d4ff;border-color:#4085dd}input[type=checkbox]{width:18px;height:18px;min-height:0;accent-color:var(--blue)}.wrap{max-width:1360px;margin:auto;padding:0 24px}.top{background:linear-gradient(110deg,#142f51,#204d80);color:white;padding:19px 0;box-shadow:0 5px 18px #162e4821}.top-in{display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{display:flex;gap:12px;align-items:center}.brand-mark{width:47px;height:47px;border-radius:14px;background:#ffffff22;display:grid;place-items:center;font-size:26px}.brand small{font-size:12px;color:#bcd5f7;letter-spacing:1px}.brand strong{display:block;font-size:23px;line-height:1.3}.meta-top{font-size:13px;color:#d5e5fd}.banner{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#e4f5ed;border:1px solid #b7e5cf;color:#1c694f;padding:12px 16px;border-radius:13px;margin:24px 0 14px}.steps{display:flex;gap:10px;margin:14px 0 20px;flex-wrap:wrap}.step-btn{border:1px solid #d5dfeb;border-radius:12px;background:white;color:#506783;padding:11px 20px;display:flex;gap:10px;align-items:center;font-weight:700}.step-btn.active{background:var(--navy);color:white;border-color:var(--navy)}.step-num{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#ecf2f8;color:#486d9a}.step-btn.active .step-num{background:#ffffff28;color:white}.layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(410px,.92fr);gap:20px;align-items:start}.panel{border:1px solid var(--line);background:white;border-radius:17px;overflow:hidden;box-shadow:0 8px 24px #26466b0d}.panel-head{padding:22px 24px 17px;border-bottom:1px solid var(--line)}h1,h2,h3,p{margin-top:0}h1{font-size:25px;margin-bottom:4px}h2{font-size:20px;margin-bottom:4px}h3{font-size:17px;margin-bottom:8px}.subtitle,.help{color:var(--muted);font-size:13px}.panel-body{padding:20px 24px 25px}.group{margin-bottom:23px;border:1px solid #e5ebf1;border-radius:15px;padding:17px;background:#fff}.group-h{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:13px}.number{display:grid;place-items:center;background:#e8f1ff;color:#2863bb;font-weight:800;border-radius:10px;width:32px;height:32px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.full{grid-column:1/-1}label{font-size:14px;font-weight:650}.req{color:#bd3b50}.mini-help{color:#73869b;font-size:12px}.bar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}.btn{border:1px solid #cbd9e9;background:#f8fbff;border-radius:10px;color:#244e81;padding:9px 15px;font-weight:700;min-height:42px}.btn.primary{background:#2567c8;color:white;border-color:#2567c8}.btn.green{background:#117659;border-color:#117659;color:white}.btn.light{background:#fff}.btn.danger{background:#fff4f4;color:#9e3d48;border-color:#efced2}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.small{font-size:13px;padding:6px 9px;min-height:34px}.items{display:flex;flex-direction:column;gap:12px}.item{border-radius:12px;border:1px solid #dce6f1;padding:12px;background:#f8fbff}.itemtop{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px}.cols-3{display:grid;grid-template-columns:1.6fr .7fr .9fr;gap:9px}.total{padding:13px 16px;border-radius:12px;background:#eaf3ff;border:1px solid #cfe0f5;text-align:right;font-weight:750}.total strong{font-size:25px;color:#123d75}.alert{border:1px solid #f1d6af;border-radius:12px;background:#fff8e9;color:#825e20;padding:12px 14px;font-size:13px;line-height:1.6}.alert.error{border-color:#efc4ca;background:#fff3f4;color:#9f303e}.alert.good{border-color:#b1e2cb;background:#edfaf2;color:#19694d}.errorline{color:#b12e41;padding-left:20px;margin:5px 0;font-size:13px}.side{position:sticky;top:18px}.side-head{padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:9px;border-bottom:1px solid var(--line)}.preview-scroll{height:min(66vh,740px);min-height:420px;overflow:auto;background:#e8edf4;padding:17px}.paper{background:white;box-shadow:0 4px 17px #18314e1d;width:210mm;min-height:297mm;padding:25mm 20mm 20mm 30mm;margin:0 auto 16px; color:black;font-family:'TH Sarabun PSK','TH Sarabun New','Sarabun','Noto Sans Thai',serif;font-size:16pt;line-height:1.22;overflow-wrap:anywhere}.paper p{margin:0 0 3mm;text-align:justify;line-height:1.22}.paper .indent{text-indent:2.5cm}.paper .memohead{display:flex;align-items:center;gap:10mm;min-height:19mm;margin-bottom:2mm}.paper .garuda{width:auto;height:15mm;object-fit:contain;flex:0 0 auto}.paper .memotitle{font-size:23pt;font-weight:bold;letter-spacing:.1px}.paper .headingline{font-size:16pt;line-height:1.22;margin:1.2mm 0;border-bottom:1px dotted #999;padding-bottom:.3mm}.paper .sign{margin:10mm 0 3mm 37%;text-align:center;break-inside:avoid}.paper .sign p{text-align:center;margin-bottom:2mm}.paper .sign-pair{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-top:8mm;break-inside:avoid;page-break-inside:avoid}.paper .sign-pair .sign{margin:0;text-align:center}.paper .sign-pair .sign p{font-size:14pt}.paper .footline{break-inside:avoid;page-break-inside:avoid}.paper .doccaption{font-size:13pt;text-align:right;color:#444;margin-top:2mm}.paper .docsubject{font-weight:bold;font-size:16pt;margin:2mm 0}.paper h4{text-align:center;font-size:17pt;margin:1mm 0 5mm}.paper table{width:100%;border-collapse:collapse;font-size:15pt;table-layout:fixed;margin:4mm 0}.paper th,.paper td{border:1px solid black;padding:1.8mm 2mm;vertical-align:top;overflow-wrap:anywhere}.paper th{text-align:center}.paper .money{text-align:right;white-space:nowrap}.paper .footline{margin-top:8mm}.paper .para-title{font-weight:bold;margin:4mm 0 1.4mm}.paper .no-break{break-inside:avoid;page-break-inside:avoid}.paper .note{font-size:13pt;color:#555}.paper .assetimg{max-width:100%;max-height:228mm;object-fit:contain;display:block;margin:auto}.docsep{height:10px;border-radius:15px;background:#cfdfeb;margin-bottom:18px}.docset{padding:16px 20px;border-top:1px solid var(--line)}.choices{display:flex;gap:14px;flex-wrap:wrap}.choice{display:flex;gap:7px;align-items:center}.only-stage{display:none}.only-stage.on{display:block}.footer{padding:24px 0 40px;font-size:13px;color:#5b7186;line-height:1.8}.source a{color:#195cab}.tag{font-size:12px;border-radius:20px;padding:5px 9px;background:#ecf2fb;color:#315f92}.file-label{background:#f2f6fc;border:1px dashed #a3bddb;border-radius:12px;padding:12px}.subtle{color:#6c8195}.empty{padding:45px 15px;text-align:center;color:#667d91}.hide{display:none!important}details{border:1px solid #dfe6ef;border-radius:13px;margin:14px 0;background:#f8fbff}summary{padding:14px 16px;cursor:pointer;font-weight:700}details>div{padding:0 15px 15px}.output-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.statusline{font-size:13px;color:#657d92;padding:0 0 12px}.mini-table{width:100%;border-collapse:collapse}.mini-table td,.mini-table th{border-bottom:1px solid #e5eaf1;padding:7px 5px;text-align:left}.mini-table input{min-width:0}.sticky-actions{position:sticky;bottom:0;background:white;border-top:1px solid #e5eaf1;padding:12px 24px;display:flex;gap:9px;justify-content:space-between;align-items:center;z-index:2}.stage-info{font-size:13px;color:#66839e}.brand-tag{font-size:12px;letter-spacing:1.1px;color:#cee2ff}
+  @media(max-width:1080px){.layout{grid-template-columns:1fr}.side{position:static}.preview-scroll{max-height:650px}.top-in{flex-wrap:wrap}}@media(max-width:700px){.wrap{padding:0 12px}.top{padding:14px 0}.brand strong{font-size:18px}.meta-top{display:none}.panel-body{padding:14px}.panel-head{padding:15px}.group{padding:13px}.fields,.cols-3{grid-template-columns:1fr}.step-btn{padding:9px 12px}.preview-scroll{padding:12px;max-width:100%;overflow:auto}.paper{margin-left:0;margin-right:0}.sticky-actions{padding:12px}}
+  @page{size:A4 portrait;margin:25mm 20mm 20mm 30mm}
+  @media print{html,body{background:white!important;margin:0!important;padding:0!important}.top,.wrap>:not(.layout),.layout>.panel:first-child,.side-head,.docset,.footer,.sticky-actions,.banner,.steps,.no-print{display:none!important}.wrap{max-width:none;margin:0;padding:0}.layout{display:block!important}.side{display:block;position:static;border:0;box-shadow:none}.preview-scroll{display:block!important;height:auto!important;max-height:none!important;overflow:visible!important;background:white!important;padding:0!important}.paper{width:auto!important;min-height:0!important;padding:0!important;margin:0!important;box-shadow:none!important;border:0!important;page-break-after:always;break-after:page;overflow:visible!important}.paper:last-child{page-break-after:auto;break-after:auto}.paper th{background:#fff!important}.paper .memotitle{color:black}a{color:black;text-decoration:none}.docsep{display:none}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+  
+/* ===== Smart Procurement 2.0 — larger, clearer, contemporary layout ===== */
+@media screen {
+  :root {--navy:#12254b;--dark:#192a46;--blue:#3462df;--line:#dfe7f3;--paper:#f6f8fd;--muted:#526780;--green:#096e5d}
+  html{scroll-behavior:smooth}
+  body{font-family:'Sarabun','Noto Sans Thai',Tahoma,sans-serif;font-size:18px;line-height:1.65;color:#1d3150;background:radial-gradient(ellipse at 9% 14%,#e1edff 0,transparent 36%),radial-gradient(ellipse at 93% 20%,#f3e9ff 0,transparent 28%),#f6f8fc}
+  button,input,select,textarea{font-size:18px;line-height:1.5}
+  input:not([type=checkbox]):not([type=file]),select,textarea{min-height:54px;padding:13px 16px;border:1.5px solid #cbd7e6;border-radius:14px;background:#fff;box-shadow:0 1px 0 #eff2f8 inset;transition:border .15s,box-shadow .15s}
+  textarea{min-height:100px}
+  input:focus,textarea:focus,select:focus{outline:none!important;border-color:#4d74ed!important;box-shadow:0 0 0 4px rgba(53,100,221,.12)!important}
+  input[type=checkbox]{width:22px;height:22px;accent-color:#3462df}
+  .wrap{max-width:1520px;padding:0 30px}
+  .top{background:#fff;color:#192e52;padding:14px 0;border-bottom:1px solid #e8edf5;box-shadow:none}
+  .brand-mark{width:60px;height:60px;background:linear-gradient(145deg,#2d56bb,#5b87fa);box-shadow:0 7px 16px #3462df29;border-radius:17px;font-size:30px;color:white}
+  .brand strong{font-size:25px;line-height:1.35;font-weight:800;color:#183153}
+  .brand small{font-size:13px;color:#6b83aa;font-weight:800;letter-spacing:1.2px}
+  .brand-tag{font-size:16px;letter-spacing:0;color:#5b6f8c}
+  .meta-top{font-size:15px;color:#627996;font-weight:600}
+  .hero{margin:25px 0 20px;padding:34px 42px;min-height:230px;display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:24px;align-items:center;overflow:hidden;border-radius:26px;background:radial-gradient(circle at 95% 5%,#5886f980,transparent 41%),linear-gradient(115deg,#11274e,#2253a5);box-shadow:0 18px 35px #18477725;color:white;position:relative}
+  .hero-kicker{font-size:13px;font-weight:800;letter-spacing:2px;color:#b9cef9;margin-bottom:8px}
+  .hero-live{display:inline-block;font-size:12px;letter-spacing:0;color:#b4ffdc;background:#ffffff22;padding:4px 10px;border-radius:99px;margin-left:12px}
+  .hero h2{font-size:clamp(28px,2.5vw,39px);font-weight:800;line-height:1.35;color:white;margin:0 0 9px}
+  .hero h2 span{color:#bfe1ff}
+  .hero p{font-size:18px;line-height:1.7;max-width:700px;color:#e5eeff;margin:0 0 18px}
+  .hero-chips{display:flex;gap:8px;flex-wrap:wrap}
+  .hero-chips span{padding:7px 13px;border-radius:99px;color:#e8f1ff;background:#ffffff1c;border:1px solid #ffffff38;font-size:14px;font-weight:700}
+  .hero-art{position:relative;min-height:185px;display:grid;place-items:center}
+  .float-sheet{width:170px;height:194px;transform:rotate(8deg);border-radius:15px;background:#fafdff;box-shadow:0 15px 30px #061a403e;padding:20px;position:relative}
+  .sheet-icon{color:#4a69ca;font-size:45px;line-height:1}.sheet-lines{margin-top:16px}.sheet-lines i{display:block;height:7px;border-radius:5px;background:#dce6f8;margin-bottom:9px}.sheet-lines i:nth-child(2){width:75%}.sheet-lines i:nth-child(3){width:90%}.sheet-seal{position:absolute;right:-11px;bottom:20px;width:53px;height:53px;display:grid;place-items:center;color:white;background:#16b894;border:5px solid #ebfff7;border-radius:50%;font-size:23px;font-weight:900;box-shadow:0 6px 18px #058a7088}.floating-dot{position:absolute;width:17px;height:17px;background:#85e9d6;border-radius:7px;transform:rotate(20deg)}.dot-a{left:0;top:20px}.dot-b{right:7px;bottom:12px;background:#86a8ff}
+  .banner{margin:0 0 20px;min-height:70px;padding:12px 20px;border-radius:17px;border:1px solid #c9e3d9;background:#edfaf4;color:#235b4e;box-shadow:0 3px 14px #1d6c4610}
+  .banner strong{font-size:17px}.banner small{display:block;font-size:15px;color:#567c72;line-height:1.5}.tag{font-size:14px;font-weight:750;background:#eaf0ff;color:#3555a6;padding:7px 12px;border-radius:99px}
+  .steps{gap:13px;margin:16px 0 21px}
+  .step-btn{font-size:17px;font-weight:800;border:1px solid #d8e3f0;border-radius:16px;background:white;color:#546b86;padding:13px 22px;min-height:57px;box-shadow:0 4px 12px #183b6b0b;transition:background .15s,transform .15s}
+  .step-btn:hover,.btn:hover:not(:disabled){transform:translateY(-1px)}
+  .step-btn.active{background:#2e5ed1;box-shadow:0 8px 20px #3462df3d;border-color:#2e5ed1}
+  .step-num{width:32px;height:32px;background:#e8effc;font-size:16px;color:#37588e}
+  .layout{grid-template-columns:minmax(0,1.1fr) minmax(490px,.9fr);gap:23px}
+  .panel{border-radius:24px;border:1px solid #e4ebf5;box-shadow:0 10px 38px #183b7012;background:#fff}
+  .panel-head{padding:25px 30px 21px;border-bottom:1px solid #e8eef6;background:linear-gradient(100deg,#fff,#f8fbff)}
+  h1{font-size:28px;line-height:1.4;font-weight:800;margin-bottom:6px;color:#193354}
+  h2{font-size:24px;line-height:1.4;font-weight:800;color:#203c61}
+  h3{font-size:21px;line-height:1.4;font-weight:800;color:#203b5e}
+  .subtitle,.help,.stage-info{font-size:16px;line-height:1.65;color:#657a93}
+  .panel-body{padding:26px 30px 20px}
+  .group{border-radius:20px;margin-bottom:23px;padding:21px 22px;border:1px solid #e5ebf4;background:#fcfdff;box-shadow:0 2px 11px #2d527506}
+  .group-h{font-size:20px;line-height:1.4;color:#193b63;font-weight:800;gap:12px;margin-bottom:17px}
+  .number{width:38px;height:38px;border-radius:12px;background:#e6eeff;color:#315cbb;font-size:19px}
+  .fields{gap:17px}.field{gap:7px}
+  label{font-size:16px;font-weight:750;line-height:1.55;color:#28405e}
+  .req{color:#d54059}
+  .mini-help{font-size:15px;line-height:1.55;color:#6c8199}
+  .btn{font-size:17px;font-weight:800;padding:12px 21px;min-height:51px;border-radius:13px;border-color:#d2deee;box-shadow:0 2px 8px #1c457313;transition:transform .15s,box-shadow .15s}
+  .btn.primary{background:linear-gradient(115deg,#2a5ad6,#477bf1);border-color:#2f63de;box-shadow:0 9px 19px #2f63de31}
+  .btn.green{background:#0c846f}.btn.small{font-size:15px;min-height:38px;padding:8px 13px}
+  .item{background:#f4f8ff;border-radius:16px;border:1px solid #dce7f6;padding:16px}
+  .itemtop{font-size:17px}
+  .total{border-radius:16px;text-align:left;font-size:17px;padding:17px 19px;border:1px solid #cbdef7;background:#eaf2ff}
+  .total strong{font-size:32px;letter-spacing:-.5px;margin:0 5px}
+  .alert{border-radius:15px;padding:15px 17px;font-size:16px;line-height:1.65}
+  .errorline{font-size:15px;line-height:1.65}
+  .route-pick{padding:15px;border:1px solid #cbdaf7;background:linear-gradient(120deg,#f4f8ff,#fff);border-radius:13px}.route-pick label{font-size:16px;color:#244b84}.route-pick select{font-weight:700;color:#204b87;border-color:#b9cbed}.route-pick .mini-help{font-size:13px;line-height:1.6}
+  .route{display:flex;gap:14px;align-items:start;border-radius:16px;padding:17px 19px;margin:12px 0 0;border:1px solid #d2e0fa;background:linear-gradient(110deg,#f0f6ff,#f8fbff)}
+  .route-symbol{display:grid;place-items:center;flex:0 0 auto;width:38px;height:38px;border-radius:12px;color:#fff;font-weight:900;background:#3469d5;font-size:19px}
+  .route-eyebrow{font-size:13px;font-weight:800;letter-spacing:.5px;color:#5b78a5}
+  .route strong{display:block;font-size:17px;color:#234c88;line-height:1.6}
+  .route p{font-size:15px;color:#667e9d;line-height:1.5;margin:1px 0 0}
+  .section-divider{display:flex;align-items:center;gap:10px;margin-bottom:14px}.section-divider span{font-size:16px;font-weight:800;color:#2e5a9c}.section-divider:after{content:'';height:1px;flex:1;background:#d9e3f3}
+  .standard-extras{border:1px solid #dbe7fb;border-radius:17px;background:#f5f9ff;padding:17px;margin-top:16px}
+  .standard-choice.hide{display:none}
+  .side{top:14px}
+  .side-head{padding:23px 25px;gap:10px}
+  .docset{padding:20px 25px}
+  .choice{font-size:15px;gap:8px;color:#405976;font-weight:750;background:#f4f7fd;border:1px solid #e3eaf5;border-radius:11px;padding:9px 10px}
+  .choices{gap:9px}
+  .statusline{font-size:15px}
+  .preview-scroll{background-color:#e8eef7;background-image:radial-gradient(#d2ddec 1px,transparent 1px);background-size:18px 18px;height:min(67vh,790px);padding:22px}
+  .paper{box-shadow:0 15px 35px #16324e25}
+  .sticky-actions{padding:17px 29px;box-shadow:0 -8px 20px #ffffffdc;border-top:1px solid #e9edf5;gap:14px}
+  .footer{font-size:15px;padding:20px 0 55px;line-height:1.8}
+  details{background:#f7faff;border-radius:16px}
+  summary{font-size:17px;padding:16px}
+  .file-label{border-radius:14px}
+  :is(button,a,input,select,textarea):focus-visible{outline:3px solid #84a3ff;outline-offset:2px}
+}
+@media screen and (max-width:1250px){.layout{grid-template-columns:1fr}.side{position:static}.preview-scroll{height:min(70vh,850px)}.hero{grid-template-columns:1fr 170px}.hero-art{min-height:155px}.float-sheet{transform:scale(.78) rotate(8deg)}}
+@media screen and (max-width:740px){.wrap{padding:0 14px}.top{padding:12px 0}.brand-mark{height:52px;width:52px}.brand strong{font-size:19px}.brand small{font-size:11px}.brand-tag{font-size:14px}.meta-top{display:none}.hero{margin:15px 0;padding:23px 20px;display:block;min-height:0;border-radius:21px}.hero h2{font-size:27px}.hero p{font-size:16px}.hero-art{display:none}.hero-chips span{font-size:13px}.banner{display:flex;align-items:flex-start;flex-direction:column;gap:8px;padding:13px 15px}.banner strong{font-size:16px}.banner small{font-size:14px}.steps{flex-wrap:nowrap;gap:7px;overflow-x:auto;padding-bottom:4px}.step-btn{flex:0 0 auto;min-height:52px;padding:10px 12px;font-size:15px;border-radius:13px}.step-num{width:26px;height:26px;font-size:14px}.panel-head{padding:18px}.panel-body{padding:14px}.group{padding:16px;margin-bottom:15px}.group-h{font-size:18px}.fields,.cols-3{grid-template-columns:1fr}.choice{font-size:15px}.btn{font-size:16px}.sticky-actions{padding:12px 14px;flex-direction:column;align-items:stretch}.sticky-actions .btn{width:100%}.side-head{padding:16px}.docset{padding:14px}.preview-scroll{padding:12px}.footer{padding-bottom:25px}h1{font-size:23px}h2{font-size:22px}.route{padding:13px}.layout{gap:15px}}
+@media print{.hero{display:none!important}.route,.standard-extras{display:none!important}}
+
+@media screen{.top-tools{display:flex;align-items:center;gap:19px}.font-switch{font-family:inherit;background:#f0f5ff;color:#305cad;border:1px solid #ccdaef;border-radius:11px;padding:10px 14px;font-size:15px;font-weight:800;min-height:43px;white-space:nowrap}.font-switch[aria-pressed=true]{color:#fff;background:#3565d6;border-color:#3565d6}.large-text{font-size:20px}.large-text label{font-size:19px}.large-text .help,.large-text .mini-help,.large-text .subtitle,.large-text .stage-info{font-size:18px}.large-text input:not([type=checkbox]):not([type=file]),.large-text select,.large-text textarea{font-size:20px}.large-text .btn{font-size:19px}.large-text .step-btn{font-size:19px}.large-text .group-h{font-size:22px}.large-text .choice{font-size:17px}.large-text .route p{font-size:17px}.large-text .banner small{font-size:16px}}
+@media screen and (max-width:740px){.top-tools{gap:6px}.font-switch{padding:7px 9px;font-size:13px;min-height:37px}.large-text .brand small{font-size:11px}.large-text .step-btn{font-size:16px}.large-text .group-h{font-size:20px}}
+
+/* ===== School identity branding · v2.2 ===== */
+.school-logo{width:66px;height:66px;flex:0 0 66px;object-fit:contain;background:#fff;border:2px solid #ffffffaa;border-radius:16px;padding:2px;box-shadow:0 6px 18px #071a362e}
+.brand-tag{font-size:15px;font-weight:800;letter-spacing:0;color:#fff;line-height:1.45}
+.school-logo-preview{width:74px;height:74px;object-fit:contain;background:#fff;border:1px solid #dce4ed;border-radius:14px;padding:3px}
+@media(max-width:740px){.school-logo{width:52px;height:52px;flex-basis:52px;border-radius:13px}.brand{gap:9px}.brand-tag{font-size:13px}}
+
+</style>
 </head>
-<body class="p-4 md:p-10">
-    <div class="max-w-7xl mx-auto">
-        
-        <!-- Header -->
-        <div class="bg-gradient-to-br from-indigo-900 via-blue-800 to-blue-900 rounded-3xl p-8 mb-10 text-white shadow-2xl relative overflow-hidden">
-            <div class="relative z-10">
-                <h1 class="text-3xl md:text-4xl font-bold">ระบบวิเคราะห์ความสอดคล้องผลสัมฤทธิ์และ O-NET</h1>
-                <p class="opacity-80 mt-2 text-lg">ข้อมูลบูรณาการและบทวิเคราะห์เชิงคุณภาพ 2566-2568 | โรงเรียนจตุรภูมิพิทยาคาร</p>
-                <div class="flex flex-wrap gap-4 mt-6">
-                    <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-lg text-center min-w-[140px]">
-                        <span class="block text-xs opacity-70">เป้าหมายสถานศึกษา</span>
-                        <span class="text-xl font-bold">ร้อยละ 65.00</span>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-lg text-center border border-white/30 min-w-[140px]">
-                        <span class="block text-xs opacity-70">ดัชนีความสอดคล้อง</span>
-                        <span class="text-xl font-bold text-green-300">ความสอดคล้องสูง</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body>
+<header class="top"><div class="wrap top-in"><div class="brand"><img alt="ตราสัญลักษณ์โรงเรียนจตุรภูมิพิทยาคาร" class="school-logo" id="schoolLogoHeader" referrerpolicy="no-referrer" src="https://img2.pic.in.th/cd2c424c73d55fd095a1435d4b822203.th.png"/><div><small>SMART PROCUREMENT · SCHOOL EDITION 2.3</small><strong>ระบบสร้างเอกสารจัดซื้อ PDF</strong><div class="brand-tag" id="schoolHeader">โรงเรียนจตุรภูมิพิทยาคาร</div></div></div><div class="top-tools"><button aria-label="ขยายตัวอักษรบนหน้าเว็บ" aria-pressed="false" class="font-switch" id="toggleLargeText" type="button">A+ ขยายตัวอักษร</button><div class="meta-top">ระบบพัสดุสำหรับครู • จัดซื้อไม่เกิน 500,000 บาท</div></div></div></header>
+<main class="wrap"><section aria-label="แนะนำระบบ" class="hero no-print">
+<div class="hero-copy"><div class="hero-kicker">DOCUMENT WORKSPACE <span class="hero-live">● พร้อมใช้งาน</span></div>
+<h2>งานจัดซื้อพัสดุ <span>ง่ายขึ้นในหน้าเดียว</span></h2>
+<p>กรอกข้อมูลสำคัญครั้งเดียว เลือกเอกสาร ตรวจตัวอย่าง แล้วพิมพ์หรือบันทึกเป็น PDF ตามรูปแบบราชการ</p>
+<div class="hero-chips"><span>✓ ว804 ไม่เกิน 50,000 บาท</span><span>✓ เฉพาะเจาะจง ถึง 500,000 บาท</span><span>✓ ไม่ใช้ฐานข้อมูล</span></div>
+</div>
+<div aria-hidden="true" class="hero-art"><div class="float-sheet"><div class="sheet-icon">▤</div><div class="sheet-lines"><i></i><i></i><i></i></div><div class="sheet-seal">✓</div></div><div class="floating-dot dot-a"></div><div class="floating-dot dot-b"></div></div>
+</section>
+<div class="banner"><span><strong>🔒 ไม่ต้องเข้าสู่ระบบ ไม่เก็บข้อมูล</strong><small>ทุกอย่างทำงานในเบราว์เซอร์ของคุณ และดาวน์โหลด PDF ได้ทันที</small></span><span class="tag">เวอร์ชัน 2.3 · ปรับเอกสาร ว804 ให้ครบชุด</span></div>
+<div aria-label="ขั้นตอน" class="steps" role="tablist"><button class="step-btn active" data-stage="before" type="button"><span class="step-num">1</span> ก่อนจัดซื้อ</button><button class="step-btn" data-stage="after" type="button"><span class="step-num">2</span> หลังจัดซื้อ</button><button class="step-btn" data-stage="guide" type="button"><span class="step-num">3</span> วิธีใช้และตั้งค่า</button></div>
+<div class="layout">
+<section aria-label="ข้อมูลเอกสาร" class="panel">
+<div class="panel-head"><h1 id="paneTitle">สร้างชุดเอกสารก่อนจัดซื้อ</h1><div class="subtitle" id="paneSubtitle">กรอกข้อมูลแล้วเลือก ว804 หรือให้ระบบแนะนำตามวงเงิน</div></div>
+<div class="only-stage on" id="beforeStage"><div class="panel-body">
+<div class="group"><div class="group-h"><span class="number">1</span> ประเภทงานและเหตุผล</div><div class="fields"><div class="field"><label for="kind">ประเภท <span class="req">*</span></label><select id="kind"><option value="purchase">จัดซื้อพัสดุ (วงเงินไม่เกิน 500,000 บาท)</option></select></div><div class="field"><label for="category">หมวดพัสดุ</label><select id="category"><option value="วัสดุ">วัสดุ</option><option value="ครุภัณฑ์">ครุภัณฑ์</option><option value="หนังสือและสื่อการเรียนรู้">หนังสือและสื่อการเรียนรู้</option><option value="อุปกรณ์และวัสดุการศึกษา">อุปกรณ์และวัสดุการศึกษา</option><option value="พัสดุอื่น ๆ">พัสดุอื่น ๆ</option></select></div><div class="field full"><label for="subject">ชื่อเรื่อง / สิ่งที่ต้องการจัดซื้อ <span class="req">*</span></label><input id="subject" placeholder="เช่น จัดซื้อวัสดุสำนักงานเพื่อใช้ในการจัดการเรียนการสอน"/></div><div class="field full"><label for="reason">เหตุผลและความจำเป็น <span class="req">*</span></label><textarea id="reason" placeholder="เช่น เพื่อใช้ในกิจกรรมการเรียนการสอนตามโครงการ..." rows="3"></textarea></div><div class="field full route-pick"><label for="routeChoice">แนวทางจัดซื้อที่ต้องการใช้ <span class="req">*</span></label><select id="routeChoice"><option value="auto">ให้ระบบเลือกตามวงเงิน (แนะนำ)</option><option value="v804">แนวทาง ว804 — จัดซื้อไม่เกิน 50,000 บาท</option><option value="specific">วิธีเฉพาะเจาะจง — วงเงินไม่เกิน 500,000 บาท</option></select><span class="mini-help">เลือก ว804 ได้เมื่อวงเงินไม่เกิน 50,000 บาท และวันที่จัดทำรายงานตั้งแต่ 1 ธันวาคม 2568 เป็นต้นไป ระบบจะเตือนหากเงื่อนไขไม่ตรง</span></div></div></div>
+<div class="group"><div class="group-h"><span class="number">2</span> รายการพัสดุและราคาประมาณการ</div><div class="items" id="items"></div><div class="bar" style="margin:13px 0"><button class="btn" id="addItem" type="button">＋ เพิ่มรายการพัสดุ</button><span class="mini-help">ราคาต่อหน่วยเป็นราคารวมภาษีและค่าใช้จ่ายแล้ว</span></div><div class="total">รวมวงเงินประมาณการ <strong id="estimateTotal">0.00</strong> บาท</div><div class="alert" id="eligibility" style="margin-top:10px">กรอกรายการเพื่อให้ระบบตรวจวงเงินและเลือกแม่แบบให้</div><div aria-live="polite" class="route" id="routeCard">
+<div class="route-symbol">↗</div><div><div class="route-eyebrow">แนวทางจัดซื้อที่ระบบเลือก</div><strong id="routeName">กรอกรายการเพื่อเลือกเส้นทาง</strong><p id="routeHint">ระบบจะเลือกแม่แบบเอกสารที่เข้ากับวงเงินโดยอัตโนมัติ</p></div></div><div class="standard-extras hide" id="standardExtras">
+<div class="section-divider"><span>ข้อมูลเพิ่มเติม · วิธีเฉพาะเจาะจง</span></div>
+<p class="mini-help">สำหรับวงเงินเกิน 50,000 ถึง 500,000 บาท ใช้รายงานขอซื้อตามระเบียบข้อ 22 กรุณาตรวจสอบข้อมูลต่อไปนี้</p>
+<div class="fields">
+<div class="field"><label for="centralPrice">ราคากลาง (บาท) <span class="req">*</span></label><input id="centralPrice" min="0.01" placeholder="ราคากลางที่ตรวจสอบแล้ว" step="0.01" type="number"/><span class="mini-help">ไม่จำเป็นต้องเท่ากับวงเงินประมาณการ</span></div>
+<div class="field"><label for="centralBasis">แหล่งที่มาของราคากลาง <span class="req">*</span></label><input id="centralBasis" placeholder="เช่น ราคาสืบจากท้องตลาด / ราคามาตรฐาน"/></div>
+<div class="field"><label for="deliveryDays">กำหนดส่งมอบภายใน (วัน) <span class="req">*</span></label><input id="deliveryDays" max="365" min="1" placeholder="เช่น 15" step="1" type="number"/></div>
+<div class="field"><label for="criteria">หลักเกณฑ์พิจารณาข้อเสนอ <span class="req">*</span></label><select id="criteria"><option value="คุณสมบัติถูกต้องตามข้อกำหนดและราคาที่เหมาะสม">คุณสมบัติและราคาที่เหมาะสม</option><option value="เกณฑ์ราคา">เกณฑ์ราคา</option><option value="เกณฑ์ราคาประกอบเกณฑ์อื่นที่หน่วยงานกำหนด">ราคาและเกณฑ์อื่น (ต้องระบุแยก)</option></select></div>
+<div class="field full"><label for="extraConsideration">ข้อเสนอเพิ่มเติม / การแต่งตั้งผู้ตรวจรับ (ถ้ามี)</label><textarea id="extraConsideration" placeholder="ระบุคำสั่ง / ผู้ตรวจรับ / เงื่อนไขพิเศษ ตามข้อเท็จจริง" rows="2"></textarea></div>
+</div>
+</div></div>
+<div class="group"><div class="group-h"><span class="number">3</span> โครงการและแหล่งงบประมาณ</div><div class="fields"><div class="field full"><label for="project">ชื่อโครงการ / กิจกรรม <span class="req">*</span></label><input id="project" placeholder="เช่น โครงการยกระดับคุณภาพการจัดการเรียนรู้"/></div><div class="field"><label for="fund">แหล่งงบประมาณ <span class="req">*</span></label><select id="fund"><option value="เงินอุดหนุนรายหัว">เงินอุดหนุนรายหัว</option><option value="เงินกิจกรรมพัฒนาผู้เรียน">เงินกิจกรรมพัฒนาผู้เรียน</option><option value="เงินรายได้สถานศึกษา">เงินรายได้สถานศึกษา</option><option value="เงินอื่น ๆ ตามที่ได้รับอนุมัติ">เงินอื่น ๆ ตามที่ได้รับอนุมัติ</option></select></div><div class="field"><label for="fiscal">ปีงบประมาณ พ.ศ. <span class="req">*</span></label><input id="fiscal" max="2600" min="2568" placeholder="2570" type="number"/></div></div></div>
+<div class="group"><div class="group-h"><span class="number">4</span> ชื่อผู้จัดทำและผู้เกี่ยวข้อง</div><div class="fields"><div class="field"><label for="requester">ผู้จัดทำรายงาน <span class="req">*</span></label><input id="requester" placeholder="ชื่อ–สกุล"/></div><div class="field"><label for="reqPosition">ตำแหน่ง <span class="req">*</span></label><input id="reqPosition" placeholder="เช่น ครู"/></div><div class="field"><label for="assigned">ผู้ที่จะเสนอให้มอบหมายไปซื้อ/ตรวจรับ <span class="req">*</span></label><input id="assigned" placeholder="ชื่อ–สกุล (ตรวจสอบคำสั่งจริง)"/></div><div class="field"><label for="assignedPosition">ตำแหน่งผู้รับมอบหมาย <span class="req">*</span></label><input id="assignedPosition" placeholder="เช่น ครู"/></div><div class="field"><label for="headOfficerName">ชื่อหัวหน้าเจ้าหน้าที่ (ถ้ามี)</label><input id="headOfficerName" placeholder="ชื่อ–สกุลตามคำสั่งจริง"/></div><div class="field"><label for="headOfficerPosition">ตำแหน่งหัวหน้าเจ้าหน้าที่</label><input id="headOfficerPosition" value="หัวหน้าเจ้าหน้าที่"/></div><div class="field"><label for="headOfficerDate">วันที่ลงนาม/ให้ความเห็น</label><input id="headOfficerDate" type="date"/></div><div class="field full"><label>ความเห็นหัวหน้าเจ้าหน้าที่ (เลือกเมื่อมีผลจริง)</label><div class="choices"><label class="choice"><input id="headOfficerApprove" type="checkbox"/> เห็นชอบ</label><label class="choice"><input id="headOfficerSigned" type="checkbox"/> ลงนามแล้ว</label></div></div></div><p class="mini-help" style="margin:10px 0 0">ชื่อผู้รับมอบหมายในเอกสารเป็น “ข้อเสนอ” เท่านั้น ไม่ใช่หลักฐานว่าได้รับมอบหมายหรืออนุมัติแล้ว ช่องความเห็นและลงนามของหัวหน้าเจ้าหน้าที่ให้เลือกตามข้อเท็จจริงเท่านั้น</p></div>
+<div class="group"><div class="group-h"><span class="number">5</span> วันที่และข้อมูลหนังสือ</div><div class="fields"><div class="field"><label for="reqDate">วันที่จัดทำรายงาน <span class="req">*</span></label><input id="reqDate" type="date"/></div><div class="field"><label for="useDate">วันที่ต้องการใช้พัสดุ <span class="req">*</span></label><input id="useDate" type="date"/></div><div class="field full"><label for="docNo">เลขที่หนังสือ (ถ้ามี)</label><input id="docNo" placeholder="เว้นว่างไว้จนกว่าจะได้รับเลขสารบรรณจริง"/></div><div class="field full"><label for="requestDecision">ผลพิจารณาของผู้มีอำนาจในรายงานขอซื้อ (กรอกเมื่อมีผลจริง)</label><select id="requestDecision"><option value="">ยังไม่ระบุ / เว้นช่องไว้ลงนาม</option><option value="เห็นชอบ">เห็นชอบ</option></select></div></div></div>
+<div aria-live="polite" id="beforeErrors"></div>
+</div><div class="sticky-actions"><span class="stage-info">สร้างได้: รายงานขอซื้อ + บัญชีรายละเอียดพัสดุ</span><button class="btn primary" id="buildBefore" type="button">ตรวจและสร้างตัวอย่าง →</button></div></div>
+<div class="only-stage" id="afterStage"><div class="panel-body">
+<div class="alert">กรอกข้อมูลหลังจากได้รับความเห็นชอบและดำเนินการซื้อจริงแล้วเท่านั้น ข้อมูลประมาณการจากขั้นแรกไม่ถือเป็นผลการซื้อจริง สำหรับ ว804 ระบบจะตรวจรายงานภายใน 5 วันทำการ โดยต้องระบุวันหยุดราชการที่มีผลในช่วงนั้นเอง</div>
+<div class="group" style="margin-top:15px"><div class="group-h">ข้อมูลอนุมัติและผู้ขาย</div><div class="fields"><div class="field full"><label for="approvalRef">อ้างอิงบันทึกที่อนุมัติ / เลขที่หนังสือ <span class="req">*</span></label><input id="approvalRef" placeholder="กรอกเลขที่หนังสือและรายละเอียดการอนุมัติจริง"/></div><div class="field"><label for="approveDate">วันที่ได้รับอนุมัติ <span class="req">*</span></label><input id="approveDate" type="date"/></div><div class="field"><label for="reportDate">วันที่จัดทำรายงานสรุป <span class="req">*</span></label><input id="reportDate" type="date"/></div><div class="field"><label for="summaryDocNo">เลขที่หนังสือรายงานสรุป (ถ้ามี)</label><input id="summaryDocNo" placeholder="เลขสารบรรณของรายงานสรุป"/></div><div class="field"><label for="purchaseDate">วันที่จัดซื้อจริง <span class="req">*</span></label><input id="purchaseDate" type="date"/></div><div class="field full"><label for="vendor">ชื่อผู้ประกอบการ / ร้านค้า <span class="req">*</span></label><input id="vendor" placeholder="ชื่อผู้ขายตามหลักฐานการชำระเงิน"/></div><div class="field"><label for="evidenceType">ประเภทหลักฐาน <span class="req">*</span></label><select id="evidenceType"><option value="ใบเสร็จรับเงิน">ใบเสร็จรับเงิน</option><option value="ใบกำกับภาษีแบบเต็มรูป">ใบกำกับภาษีแบบเต็มรูป</option><option value="หลักฐานที่หน่วยงานรับรองว่าใช้ได้">หลักฐานอื่นที่หน่วยงานรับรองว่าใช้ได้</option></select></div><div class="field"><label for="evidenceBookNo">เล่มที่ใบเสร็จรับเงิน <span class="req">*</span></label><input id="evidenceBookNo" placeholder="เลขที่เล่ม หรือระบุ ‘ไม่มี’ ตามหลักฐาน"/></div><div class="field"><label for="evidenceNo">เลขที่หลักฐาน <span class="req">*</span></label><input id="evidenceNo" placeholder="เลขที่ใบเสร็จ / ใบกำกับภาษี"/></div><div class="field"><label for="evidenceDate">วันที่ในหลักฐาน <span class="req">*</span></label><input id="evidenceDate" type="date"/></div><div class="field"><label for="receivedDate">วันที่ได้รับมอบพัสดุครบถ้วน <span class="req">*</span></label><input id="receivedDate" type="date"/></div><div class="field"><label for="inspectionDate">วันที่ตรวจรับจริง <span class="req">*</span></label><input id="inspectionDate" type="date"/></div></div><div class="fields standard-extras hide" id="negotiationExtras" style="margin-top:16px">
+<div class="field"><label for="quotationRef">อ้างอิงใบเสนอราคา / หลักฐานการเจรจา <span class="req">*</span></label><input id="quotationRef" placeholder="เลขที่ใบเสนอราคาตามจริง"/></div>
+<div class="field"><label for="quotationDate">วันที่ใบเสนอราคา <span class="req">*</span></label><input id="quotationDate" type="date"/></div>
+</div></div>
+<div class="group" id="v804PaymentGroup"><div class="group-h">การชำระเงินและหลักฐานเบิกจ่าย</div><div class="fields"><div class="field full"><label for="paymentMode">วิธีชำระเงิน <span class="req">*</span></label><select id="paymentMode"><option value="cash">ใช้เงินสดสำรองจ่าย</option><option value="loan">ใช้เงินยืมตามสัญญา</option></select></div><div class="field" id="loanContractWrap"><label for="loanContractNo">เลขที่สัญญาเงินยืม <span class="req">*</span></label><input id="loanContractNo" placeholder="เลขที่สัญญาเงินยืมตามจริง"/></div><div class="field" id="loanDateWrap"><label for="loanDate">วันที่สัญญาเงินยืม <span class="req">*</span></label><input id="loanDate" type="date"/></div><div class="field full" id="advanceAmountWrap"><label for="advanceAmount">จำนวนเงินสดที่ทดรองจ่าย (บาท) <span class="req">*</span></label><div class="fields"><div class="field"><input id="advanceAmount" type="number" min="0.01" step="0.01" placeholder="จำนวนเงินจริงที่ทดรองจ่าย"/></div><div class="field"><button class="btn" id="useActualAmount" type="button">ใช้ยอดซื้อจริงเป็นยอดทดรองจ่าย</button></div></div><span class="mini-help">กรอกยอดที่จ่ายจริงและขอเบิกคืนตามหลักฐาน ไม่ใช่ยอดประมาณการ</span></div><div class="field full"><label class="choice"><input id="paymentConfirm" type="checkbox"/> ยืนยันว่าชำระเงินให้ผู้ขายเรียบร้อยแล้วตามหลักฐานจริง</label></div><div class="field full"><label for="summaryDecision">ผลพิจารณารายงานสรุปของผู้มีอำนาจ (กรอกเมื่อมีผลจริง)</label><select id="summaryDecision"><option value="">ยังไม่ระบุ / เว้นช่องไว้ลงนาม</option><option value="ทราบ">ทราบ</option><option value="อนุมัติ">อนุมัติ</option></select></div></div></div><div class="group" id="v804DeadlineGroup"><div class="group-h">กำหนดเวลาจัดทำรายงานสรุปผล ว804</div><div class="field"><label for="officialHolidays">วันหยุดราชการ/วันหยุดหน่วยงานในช่วงดังกล่าว (ถ้ามี)</label><input id="officialHolidays" placeholder="กรอกวันที่รูปแบบ YYYY-MM-DD คั่นด้วยเครื่องหมายจุลภาค เช่น 2026-10-12, 2026-10-23"/><span class="mini-help">ระบบคำนวณวันทำการโดยไม่นับเสาร์–อาทิตย์และวันที่คุณระบุเท่านั้น ไม่ได้เชื่อมต่อปฏิทินวันหยุดราชการอัตโนมัติ</span></div><div id="deadlineStatus" class="alert" style="margin-top:12px">กรอกวันที่ซื้อจริงและวันที่รายงานเพื่อคำนวณกำหนด 5 วันทำการ</div></div><div class="group"><div class="group-h">รายการและยอดซื้อจริง</div><div id="actualItems"><p class="mini-help">กรอกข้อมูลรายการขั้นตอนที่ 1 ก่อน</p></div><div class="total">รวมยอดจัดซื้อจริง <strong id="actualTotal">0.00</strong> บาท</div></div>
+<div class="group"><div class="group-h">การตรวจรับและหลักฐานแนบ</div><label class="choice" style="margin-bottom:12px"><input id="inspectionConfirm" type="checkbox"/> ข้าพเจ้ายืนยันว่ามีการตรวจรับพัสดุจริงถูกต้อง และมีหลักฐานการลงนามตามที่หน่วยงานกำหนด</label><div class="field"><label for="attachments">แนบรูปถ่ายหลักฐาน (JPG/PNG/WebP) เพื่อพิมพ์ต่อท้าย PDF</label><input accept="image/png,image/jpeg,image/webp" id="attachments" multiple="" type="file"/><span class="mini-help">ไฟล์ภาพจะใช้ชั่วคราวในเครื่อง ไม่อัปโหลด / ถ้าเป็น PDF ใบเสร็จ ให้เก็บแนบเป็นไฟล์แยก เพราะโปรแกรมนี้ไม่รวมไฟล์ PDF ภายนอก</span></div><div class="mini-help" id="attachmentList" style="margin-top:10px"></div></div>
+<div aria-live="polite" id="afterErrors"></div>
+</div><div class="sticky-actions"><span class="stage-info">สร้างรายงานตามเส้นทางที่เลือก พร้อมเอกสารประกอบ</span><button class="btn primary" id="buildAfter" type="button">ตรวจและสร้างรายงาน →</button></div></div>
+<div class="only-stage" id="guideStage"><div class="panel-body">
+<div class="group"><h3>ตั้งค่าข้อมูลหน่วยงานสำหรับเอกสารนี้</h3><div class="fields"><div class="field full"><label for="school">ชื่อโรงเรียน <span class="req">*</span></label><input id="school" value="โรงเรียนจตุรภูมิพิทยาคาร"/></div><div class="field full"><label for="agency">หน่วยงานต้นสังกัด / ส่วนราชการ</label><input id="agency" value="โรงเรียนจตุรภูมิพิทยาคาร"/></div><div class="field"><label for="principal">ชื่อผู้มีอำนาจพิจารณา</label><input id="principal" placeholder="ชื่อ–สกุล (ไม่ใส่ก็ได้)"/></div><div class="field"><label for="principalTitle">ตำแหน่งผู้มีอำนาจ</label><input id="principalTitle" value="ผู้อำนวยการโรงเรียนจตุรภูมิพิทยาคาร"/></div><div class="field full"><label for="officePhone">หมายเลขโทรศัพท์หน่วยงาน (ถ้ามี)</label><input id="officePhone" placeholder="เช่น 0xx-xxx-xxxx"/></div></div><p class="mini-help" style="margin:9px 0 0">การแก้ไขข้อมูลตรงนี้ใช้เฉพาะหน้าเว็บที่เปิดอยู่ ไม่บันทึกลงฐานข้อมูลหรือ Local Storage</p></div>
+<div class="group"><h3>โลโก้โรงเรียน</h3><p class="help">โลโก้นี้แสดงในส่วนหัวของเว็บไซต์คู่กับชื่อโรงเรียน หากต้องการเปลี่ยนเป็นไฟล์จากเครื่อง ให้เลือกภาพ PNG/JPG/WebP ได้ (มีผลเฉพาะหน้าที่เปิดอยู่และไม่บันทึกถาวร)</p><div class="fields"><div class="field full"><label for="schoolLogoUpload">เลือกโลโก้โรงเรียน (ไม่บังคับ)</label><input accept="image/png,image/jpeg,image/webp" id="schoolLogoUpload" type="file"/><span class="mini-help" id="schoolLogoStatus">กำลังใช้โลโก้โรงเรียนจากลิงก์ที่กำหนดไว้</span></div><div class="field full"><div class="bar" style="justify-content:flex-start;gap:12px"><img alt="ตัวอย่างโลโก้โรงเรียน" class="school-logo-preview" id="schoolLogoPreview" referrerpolicy="no-referrer" src="https://img2.pic.in.th/cd2c424c73d55fd095a1435d4b822203.th.png"/><span class="mini-help">ชื่อโรงเรียนในส่วนหัวปรับตามช่อง “ชื่อโรงเรียน” ได้</span></div></div></div></div><div class="group"><h3>ตราครุฑสำหรับหนังสือภายใน</h3><p class="help">ระบบลองแสดงภาพตราครุฑจากแหล่งอ้างอิงออนไลน์ หากไม่ปรากฏภาพ ต้องเลือกไฟล์ตราครุฑที่โรงเรียนตรวจสอบและอนุญาตให้ใช้งานจากเครื่องก่อนสั่งพิมพ์</p><div class="field"><label for="garudaUpload">เลือกภาพตราครุฑ PNG/JPG ที่ตรวจสอบความถูกต้องแล้ว (ถ้ามี)</label><input accept="image/png,image/jpeg,image/webp" id="garudaUpload" type="file"/></div><div class="bar" style="margin-top:12px"><img alt="ตราครุฑตัวอย่าง" id="garudaPreview" referrerpolicy="no-referrer" src="https://cms-media.fda.moph.go.th/461152983531528192/2023/04/jpe4XHmGBReEanQzvr9sZjii.png" style="max-width:80px;max-height:65px"/><span class="mini-help" id="garudaStatus">ควรตรวจว่าภาพแสดงผลก่อนพิมพ์จริง</span></div></div>
+<div class="group"><h3>แบบอักษรราชการ</h3><p class="help">ระบบใช้ TH Sarabun PSK / TH Sarabun New ที่ติดตั้งอยู่บนเครื่อง หากไม่มี สามารถเลือกไฟล์ฟอนต์ที่คุณมีสิทธิ์ใช้งานเพื่อโหลดชั่วคราวในเบราว์เซอร์ (ไม่มีการส่งไฟล์ไปที่ใด)</p><div class="field"><label for="fontUpload">เลือกฟอนต์ .ttf/.otf (ไม่บังคับ)</label><input accept=".ttf,.otf,font/ttf,font/otf" id="fontUpload" type="file"/></div><p class="mini-help" id="fontStatus">หากไม่ได้ติดตั้ง/เลือกฟอนต์ ระบบจะใช้ฟอนต์ไทยสำรองที่อาจไม่ตรงมาตรฐานทุกเครื่อง</p></div>
+<div class="group"><h3>ขั้นตอนบันทึก PDF</h3><ol><li>กรอกข้อมูลและกด “ตรวจและสร้างตัวอย่าง”</li><li>ตรวจข้อความ วันที่ วงเงิน ผู้ลงนาม และตราครุฑ</li><li>เลือกเอกสาร แล้วกด “พิมพ์ / บันทึก PDF”</li><li>ในหน้าต่างพิมพ์ของ Chrome/Edge เลือกปลายทาง “Save as PDF” หรือ “บันทึกเป็น PDF” และขนาด A4</li><li>ปิด Header/Footer ของเบราว์เซอร์ และตรวจตัวอย่างก่อนบันทึก</li></ol><p class="mini-help">ระบบไม่สามารถสั่งบันทึก PDF ลงเครื่องโดยข้ามหน้าต่างพิมพ์ของเบราว์เซอร์ได้ แต่ข้อความใน PDF ที่บันทึกผ่านเบราว์เซอร์จะเลือก/ค้นหาได้</p></div>
+<div class="group"><h3>ขอบเขตด้านระเบียบ</h3><p class="help">ไม่รองรับงานจ้าง การซื้อที่ดินหรือสิ่งปลูกสร้าง และวิธีที่มีวงเงินเกิน 500,000 บาท รวมทั้ง e-Market, e-Bidding และสอบราคา เอกสารที่สร้างเป็นร่างประกอบการปฏิบัติงาน ไม่ใช่การอนุมัติหรือการทำรายการใน e-GP</p><p class="help">รองรับเฉพาะการจัดซื้อพัสดุทั่วไปของโรงเรียน ภายในวงเงิน 500,000 บาท โดยแบ่งเป็นแนวทาง ว804 (ไม่เกิน 50,000 บาท ตั้งแต่ 1 ธันวาคม 2568) และวิธีเฉพาะเจาะจงตามเงื่อนไขวงเงินกรณีเกิน 50,000 ถึง 500,000 บาท ตาม พ.ร.บ.จัดซื้อจัดจ้างฯ มาตรา 56 (2)(ข) และระเบียบฯ ข้อ 22/79 ทั้งนี้ต้องตรวจสอบกรณีเฉพาะ ข้อยกเว้นและการไม่แบ่งซื้อแบ่งจ้างก่อนใช้จริง</p><p class="help">ใช้แม่แบบเป็นตัวช่วยร่างเอกสาร โปรดให้เจ้าหน้าที่พัสดุตรวจสอบรูปแบบ รายละเอียดผู้มีอำนาจ และหลักฐานที่หน่วยงานต้องใช้ก่อนลงนาม</p><p class="source"><a href="https://www.moc.go.th/th/content/category/detail/id/182/cid/36/iid/9535" rel="noopener noreferrer" target="_blank">หนังสือ ว804 (กระทรวงพาณิชย์)</a><br/><a href="https://spm.thaigov.go.th/th/cir-pcm?did=4679" rel="noopener noreferrer" target="_blank">แนวปฏิบัติและตัวอย่างแบบฟอร์ม (สำนักเลขาธิการนายกรัฐมนตรี)</a><br/><a href="https://personnel.obec.go.th/web/แนวปฏิบัติงานสารบัญ" rel="noopener noreferrer" target="_blank">แนวทางการพิมพ์หนังสือราชการ (สพฐ.)</a><br/><a href="https://cpb.ddc.moph.go.th/ddc-pic/law/reg-2560/22" rel="noopener noreferrer" target="_blank">ระเบียบฯ ข้อ 22 : รายงานขอซื้อ</a>
+<br/><a href="https://cpb.ddc.moph.go.th/ddc-pic/law/reg-2560/79" rel="noopener noreferrer" target="_blank">ระเบียบฯ ข้อ 79 : วิธีเฉพาะเจาะจง</a></p></div>
+<button class="btn danger" id="clearAll" type="button">ล้างข้อมูลทั้งหมดในหน้านี้</button>
+</div></div>
+</section>
+<aside aria-label="ตัวอย่างเอกสาร PDF" class="side panel"><div class="side-head"><div><h2>ตัวอย่างเอกสารราชการ A4</h2><span class="help" id="previewStatus">กรอกข้อมูลก่อนเพื่อสร้างตัวอย่างเอกสาร</span></div><span class="tag" id="docBadge">ยังไม่สร้าง</span></div><div class="docset"><div class="bar"><div class="choices" id="docChoices"><label class="choice"><input checked="" id="selRequest" type="checkbox"/> รายงานขอซื้อ</label><label class="choice"><input checked="" id="selSpec" type="checkbox"/> รายละเอียดพัสดุ</label><label class="choice"><input id="selSummary" type="checkbox"/> รายงานผลหลังซื้อ</label><label class="choice"><input checked="" id="selProof" type="checkbox"/> รูปหลักฐานแนบ</label><label class="choice standard-choice hide" id="selReceiptCoverWrap"><input id="selReceiptCover" type="checkbox" checked=""/> ใบติดใบเสร็จรับเงิน (เงินสดสำรองจ่าย)</label><label class="choice standard-choice hide" id="selNegotiationWrap"><input checked="" id="selNegotiation" type="checkbox"/> ผลเจรจาตกลงราคา</label>
+<label class="choice standard-choice hide" id="selInspectionWrap"><input checked="" id="selInspection" type="checkbox"/> บันทึกตรวจรับ</label></div></div><div class="bar" style="margin-top:13px"><button class="btn small" id="refreshPreview" type="button">↻ อัปเดตตัวอย่าง</button><div class="output-toolbar"><button class="btn green" disabled="" id="printBtn" type="button">▣ พิมพ์ / บันทึก PDF</button></div></div><p class="mini-help" style="margin:9px 0 0">PDF ผ่าน Chrome/Edge → เลือก “บันทึกเป็น PDF” (A4, ไม่พิมพ์ส่วนหัว/ท้ายของเบราว์เซอร์)</p></div><div class="preview-scroll" id="previewArea"><div class="empty">📄<h3>ยังไม่มีเอกสารตัวอย่าง</h3><p>เริ่มจากกรอกข้อมูลด้านซ้าย แล้วกดตรวจและสร้างตัวอย่าง</p></div></div></aside>
+</div>
+<div class="footer">ระบบช่วยจัดทำเอกสารเพื่อการพิมพ์เท่านั้น • ไม่มีการเก็บข้อมูลย้อนหลัง • PDF และภาพประกอบอยู่ในอุปกรณ์ของคุณ • กรุณาตรวจสอบแม่แบบกับเจ้าหน้าที่พัสดุของโรงเรียนก่อนใช้จริง</div>
+</main>
+<script>
+'use strict';
+(()=>{
+  const $=(id)=>document.getElementById(id);const text=(id)=>$(id).value.trim();
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmt=n=>Number(n||0).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const toNum=v=>{const n=Number(v);return Number.isFinite(n)&&n>=0?n:0};
+  const thDate=s=>{if(!s)return '................................';const [y,m,d]=s.split('-').map(Number);if(!y||!m||!d)return '................................';const dt=new Date(y,m-1,d);if(dt.getFullYear()!==y||dt.getMonth()+1!==m||dt.getDate()!==d)return '................................';const names=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];return `${d} ${names[m-1]} ${y+543}`;};
+  const digits=['ศูนย์','หนึ่ง','สอง','สาม','สี่','ห้า','หก','เจ็ด','แปด','เก้า'];
+  function underMillion(n){if(!n)return '';const s=String(n),unit=['','สิบ','ร้อย','พัน','หมื่น','แสน'];let out='';for(let i=0;i<s.length;i++){const d=Number(s[i]),p=s.length-1-i;if(!d)continue;if(p===1){out+=(d===1?'สิบ':d===2?'ยี่สิบ':digits[d]+'สิบ');}else if(p===0){out+=d===1&&s.length>1&&Number(s.slice(0,-1))>0?'เอ็ด':digits[d];}else out+=digits[d]+unit[p];}return out;}
+  function readNum(n){if(n===0)return digits[0];if(n<1000000)return underMillion(n);return readNum(Math.floor(n/1000000))+'ล้าน'+(n%1000000?underMillion(n%1000000):'');}
+  function bahtText(value){const sat=Math.round(value*100);if(!Number.isSafeInteger(sat)||sat<0)return 'จำนวนเงินเกินขอบเขต';const whole=Math.floor(sat/100),fraction=sat%100;return (whole?readNum(whole):'ศูนย์')+'บาท'+(fraction?underMillion(fraction)+'สตางค์':'ถ้วน');}
+  function isoDate(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+  function parseHolidayInput(raw){const parts=String(raw||'').split(/[,;\s]+/).filter(Boolean),valid=new Set(),invalid=[];for(const part of parts){if(!/^\d{4}-\d{2}-\d{2}$/.test(part)){invalid.push(part);continue;}const [y,m,d]=part.split('-').map(Number),dt=new Date(y,m-1,d);if(dt.getFullYear()!==y||dt.getMonth()+1!==m||dt.getDate()!==d){invalid.push(part);continue;}valid.add(part);}return {valid,invalid};}
+  function isWorkingDay(iso,holidays){const [y,m,d]=iso.split('-').map(Number),dt=new Date(y,m-1,d),day=dt.getDay();return day!==0&&day!==6&&!holidays.has(iso);}
+  function addWorkingDays(start,count,holidays){if(!start)return '';const [y,m,d]=start.split('-').map(Number),dt=new Date(y,m-1,d);let added=0,guard=0;while(added<count&&guard<5000){dt.setDate(dt.getDate()+1);guard++;if(isWorkingDay(isoDate(dt),holidays))added++;}return isoDate(dt);}
+  function workingDaysAfter(start,end,holidays){if(!start||!end||end<=start)return 0;const [y,m,d]=start.split('-').map(Number),dt=new Date(y,m-1,d);let count=0,guard=0;while(isoDate(dt)<end&&guard<5000){dt.setDate(dt.getDate()+1);guard++;const iso=isoDate(dt);if(iso<=end&&isWorkingDay(iso,holidays))count++;}return count;}
+  function deadlineFor(purchaseDate,reportDate,holidayRaw){const parsed=parseHolidayInput(holidayRaw),dueDate=addWorkingDays(purchaseDate,5,parsed.valid),days=workingDaysAfter(purchaseDate,reportDate,parsed.valid);return {dueDate,days,holidays:parsed.valid,invalid:parsed.invalid,late:!!(dueDate&&reportDate&&reportDate>dueDate)};}
+  const current=new Date();const today=`${current.getFullYear()}-${String(current.getMonth()+1).padStart(2,'0')}-${String(current.getDate()).padStart(2,'0')}`;$('reqDate').value=today;$('useDate').value=today;$('reportDate').value=today;$('fiscal').value=current.getMonth()>=9?current.getFullYear()+544:current.getFullYear()+543;
+  let itemSerial=0,stage='before',actualImages=[],beforeReady=false,afterReady=false,schoolLogoSrc='https://img2.pic.in.th/cd2c424c73d55fd095a1435d4b822203.th.png',garudaSrc='https://cms-media.fda.moph.go.th/461152983531528192/2023/04/jpe4XHmGBReEanQzvr9sZjii.png';
+  const itemHtml=()=>{const id=++itemSerial;return `<div class="item" data-key="${id}"><div class="itemtop"><strong>รายการพัสดุ <span class="item-index"></span></strong><button type="button" class="btn danger small remove-item">ลบรายการ</button></div><div class="fields"><div class="field full"><label>ชื่อรายการ <span class="req">*</span></label><input class="it-name" placeholder="เช่น กระดาษถ่ายเอกสาร A4 80 แกรม"></div><div class="field full"><label>รายละเอียดคุณลักษณะเฉพาะ <span class="req">*</span></label><input class="it-spec" placeholder="เช่น ขนาด A4, 80 แกรม, รีมละ 500 แผ่น"></div><div class="field"><label>จำนวน <span class="req">*</span></label><input class="it-qty" type="number" min="0.01" step="any" placeholder="10"></div><div class="field"><label>หน่วยนับ <span class="req">*</span></label><input class="it-unit" placeholder="รีม"></div><div class="field full"><label>ราคาประมาณการต่อหน่วย (บาท) <span class="req">*</span></label><input class="it-price" type="number" min="0" step="0.01" placeholder="150.00"></div></div></div>`};
+  function renumber(){[...$('items').children].forEach((el,i)=>el.querySelector('.item-index').textContent=i+1);}
+  function addItem(){const block=document.createElement('div');block.innerHTML=itemHtml();$('items').appendChild(block.firstChild);renumber();updateTotals();}
+  $('addItem').addEventListener('click',addItem);$('items').addEventListener('click',e=>{if(e.target.closest('.remove-item')){if($('items').children.length<=1){alert('ต้องมีรายการพัสดุอย่างน้อย 1 รายการ');return;}e.target.closest('.item').remove();renumber();updateTotals();}});$('items').addEventListener('input',()=>{updateTotals();});addItem();
+  function getItems(){return [...$('items').querySelectorAll('.item')].map((n,i)=>({index:i+1,key:n.dataset.key,name:n.querySelector('.it-name').value.trim(),spec:n.querySelector('.it-spec').value.trim(),qty:toNum(n.querySelector('.it-qty').value),unit:n.querySelector('.it-unit').value.trim(),price:toNum(n.querySelector('.it-price').value),priceRaw:n.querySelector('.it-price').value,qtyRaw:n.querySelector('.it-qty').value}));}
+function getBase(){
+    const items=getItems();
+    const base={kind:text('kind'),category:text('category'),routeChoice:text('routeChoice')||'auto',subject:text('subject'),reason:text('reason'),items,total:items.reduce((sum,i)=>sum+i.qty*i.price,0),project:text('project'),fund:text('fund'),fiscal:text('fiscal'),requester:text('requester'),reqPosition:text('reqPosition'),assigned:text('assigned'),assignedPosition:text('assignedPosition'),headOfficerName:text('headOfficerName'),headOfficerPosition:text('headOfficerPosition'),headOfficerDate:text('headOfficerDate'),headOfficerApprove:$('headOfficerApprove').checked,headOfficerSigned:$('headOfficerSigned').checked,requestDecision:text('requestDecision'),reqDate:text('reqDate'),useDate:text('useDate'),docNo:text('docNo'),school:text('school'),agency:text('agency'),principal:text('principal'),principalTitle:text('principalTitle'),officePhone:text('officePhone'),centralPrice:toNum($('centralPrice').value),centralRaw:text('centralPrice'),centralBasis:text('centralBasis'),deliveryDays:Number($('deliveryDays').value),criteria:text('criteria'),extraConsideration:text('extraConsideration')};
+    base.route=routeFor(base);
+    return base;
+  }
+  function routeFor(b){
+    if(b.kind!=='purchase'||b.total<=0||b.total>500000.00001)return 'invalid';
+    const preference=b.routeChoice||'auto';
+    if(preference==='v804'){
+      return b.total<=50000.00001 && (!b.reqDate||b.reqDate>='2025-12-01')?'v804':'invalid';
+    }
+    if(preference==='specific')return 'specific';
+    return b.total<=50000.00001 && (!b.reqDate||b.reqDate>='2025-12-01')?'v804':'specific';
+  }
+  function eligibility(b){
+    if(b.kind!=='purchase')return {ok:false,message:'รองรับเฉพาะการจัดซื้อพัสดุ ไม่รองรับการจัดจ้าง'};
+    if(b.total<=0)return {ok:false,message:'โปรดกรอกรายการและวงเงินให้มากกว่า 0 บาท'};
+    if(b.total>500000.00001)return {ok:false,message:'ยอดรวมเกิน 500,000 บาท ระบบนี้ไม่รองรับ และจะไม่สร้างชุดเอกสาร'};
+    if((b.routeChoice||'auto')==='v804'&&b.total>50000.00001)return {ok:false,message:'คุณเลือกแนวทาง ว804 แต่ยอดรวมเกิน 50,000 บาท กรุณาลดวงเงินให้ถูกต้อง หรือเปลี่ยนแนวทางเป็นวิธีเฉพาะเจาะจง'};
+    if((b.routeChoice||'auto')==='v804'&&b.reqDate&&b.reqDate<'2025-12-01')return {ok:false,message:'แนวทาง ว804 ที่ระบบนี้รองรับมีผลตั้งแต่ 1 ธันวาคม 2568 กรุณาตรวจวันที่หรือเลือกแนวทางที่ตรงกับช่วงเวลา'};
+    if(b.route==='invalid')return {ok:false,message:'ยังเลือกแนวทางไม่ได้ กรุณาตรวจสอบวงเงินและเงื่อนไขวันที่'};
+    if(b.route==='v804')return {ok:true,message:'เลือกแนวทาง ว804 แล้ว: วงเงินไม่เกิน 50,000 บาท (ต้องตรวจสอบเงื่อนไขและการไม่แบ่งซื้อแบ่งจ้าง)'};
+    return {ok:true,message:'เลือกวิธีเฉพาะเจาะจง: วงเงินไม่เกิน 500,000 บาท ตามเงื่อนไขกฎหมายและระเบียบที่เกี่ยวข้อง โปรดตรวจสอบข้อเท็จจริงก่อนใช้'};
+  }
+  function updateTotals(){
+    const b=getBase();$('estimateTotal').textContent=fmt(b.total);
+    const e=eligibility(b);$('eligibility').textContent=e.message;$('eligibility').className='alert '+(e.ok?'good':'error');
+    const labels={v804:['แนวทาง ว804','การจัดซื้อไม่เกิน 50,000 บาท'],specific:['วิธีเฉพาะเจาะจง','วงเงินไม่เกิน 500,000 บาท • รายงานตามข้อ 22'],invalid:['ยังเลือกแนวทางไม่ได้','กรอกวงเงินมากกว่า 0 บาท และไม่เกิน 500,000 บาท']};
+    $('routeName').textContent=labels[b.route][0];$('routeHint').textContent=labels[b.route][1];
+    $('standardExtras').classList.toggle('hide',b.route!=='specific');$('negotiationExtras').classList.toggle('hide',b.route!=='specific');
+    $('selNegotiationWrap').classList.toggle('hide',b.route!=='specific');$('selInspectionWrap').classList.toggle('hide',b.route!=='specific');
+    $('selSummary').parentNode.lastChild.textContent=b.route==='v804'?' รายงานสรุปผล ว804':' รายงานผลการจัดซื้อ';
+    updatePaymentUI(b);
+    renderActualRows(true);
+  }
+  function beforeErrors(b){
+    const errors=[];
+    if(!b.subject)errors.push('กรุณากรอกชื่อเรื่อง');if(!b.reason)errors.push('กรุณากรอกเหตุผลความจำเป็น');
+    if(!b.project)errors.push('กรุณากรอกชื่อโครงการ');if(!b.fund)errors.push('กรุณาเลือกแหล่งงบประมาณ');
+    if(!b.fiscal||!/^25\d{2}$/.test(b.fiscal))errors.push('กรุณาระบุปีงบประมาณ พ.ศ. ให้ถูกต้อง');
+    if(!b.requester||!b.reqPosition)errors.push('กรุณากรอกชื่อและตำแหน่งผู้จัดทำรายงาน');
+    if(!b.assigned||!b.assignedPosition)errors.push('กรุณากรอกผู้เสนอให้มอบหมายและตำแหน่ง');
+    if(!b.reqDate||!b.useDate)errors.push('กรุณาระบุวันที่จัดทำรายงานและวันที่ต้องการใช้');
+    if(b.reqDate&&b.useDate&&b.useDate<b.reqDate)errors.push('วันที่ต้องการใช้ต้องไม่ก่อนวันที่จัดทำรายงาน');
+    for(const i of b.items){if(!i.name||!i.spec||!i.unit||!i.qtyRaw||i.qty<=0||!i.priceRaw||i.price<=0)errors.push(`รายการที่ ${i.index}: กรุณาระบุชื่อ คุณลักษณะ จำนวน หน่วยนับ และราคามากกว่า 0`);}
+    if(b.route==='specific'){
+      if(!b.centralRaw||b.centralPrice<=0)errors.push('กรุณาระบุราคากลางของพัสดุที่จะซื้อ');
+      if(!b.centralBasis)errors.push('กรุณาระบุที่มาหรือหลักฐานการกำหนดราคากลาง');
+      if(!Number.isInteger(b.deliveryDays)||b.deliveryDays<=0)errors.push('กรุณาระบุระยะเวลาส่งมอบเป็นจำนวนวัน');
+      if(!b.criteria)errors.push('กรุณาเลือกหลักเกณฑ์พิจารณาข้อเสนอ');
+    }
+    if(b.route==='v804'&&(b.headOfficerApprove||b.headOfficerSigned)&&(!b.headOfficerName||!b.headOfficerDate))errors.push('เลือกความเห็น/ลงนามของหัวหน้าเจ้าหน้าที่แล้ว กรุณากรอกชื่อและวันที่ตามจริง');const e=eligibility(b);if(!e.ok)errors.push(e.message);return errors;
+  }
+    function showErrors(id,errs){$(id).innerHTML=errs.length?`<div class="alert error"><strong>โปรดแก้ไขข้อมูลก่อนสร้างเอกสาร</strong><ul class="errorline">${errs.map(e=>`<li>${esc(e)}</li>`).join('')}</ul></div>`:'';}
+  function tableItems(items,actual=false){let rows=items.map(i=>{const qty=actual?i.actualQty:i.qty,price=actual?i.actualPrice:i.price;return `<tr><td style="width:7%;text-align:center">${i.index}</td><td style="width:44%">${esc(i.name)}<br><small>${esc(i.spec)}</small></td><td style="width:12%;text-align:center">${esc(qty)}</td><td style="width:12%;text-align:center">${esc(i.unit)}</td><td style="width:12%;text-align:right">${fmt(price)}</td><td style="width:13%;text-align:right">${fmt(qty*price)}</td></tr>`;}).join('');const total=items.reduce((s,i)=>s+(actual?i.actualQty*i.actualPrice:i.qty*i.price),0);return `<table><thead><tr><th>ที่</th><th>รายการ/คุณลักษณะเฉพาะ</th><th>จำนวน</th><th>หน่วย</th><th>ราคาต่อหน่วย</th><th>รวม (บาท)</th></tr></thead><tbody>${rows}<tr><td colspan="5" style="text-align:right"><b>รวมเป็นเงินทั้งสิ้น</b></td><td style="text-align:right"><b>${fmt(total)}</b></td></tr></tbody></table>`;}
+  const neat=(s)=>esc(s||'................................................');
+  const heading=(b,subject,date,number,throughHead=false)=>`<div class="memohead"><img class="garuda" src="${esc(garudaSrc)}" alt="ตราครุฑ" referrerpolicy="no-referrer"><div class="memotitle">บันทึกข้อความ</div></div><div class="headingline"><b>ส่วนราชการ</b> ${neat(b.agency||b.school)}${b.officePhone?' โทร. '+neat(b.officePhone):''}</div><div class="headingline"><b>ที่</b> ${neat(number)} &nbsp;&nbsp; <b>วันที่</b> ${neat(thDate(date))}</div><div class="headingline"><b>เรื่อง</b> ${neat(subject)}</div><div class="headingline"><b>เรียน</b> ${neat(b.principalTitle||'ผู้อำนวยการสถานศึกษา')}</div>${throughHead?'<div class="headingline"><b>ผ่าน</b> หัวหน้าเจ้าหน้าที่</div>':''}`;
+  const sign=(name,title,role='')=>`<div class="sign no-break"><p>ลงชื่อ ..........................................................</p><p>(${neat(name)})</p><p>${neat(title)}${role?' · '+esc(role):''}</p></div>`;
+  const signPair=(left,right)=>`<div class="sign-pair no-break">${left}${right}</div>`;
+  const approval=(b,type='request')=>{const summary=type==='summary',decision=summary?text('summaryDecision'):text('requestDecision'),choices=summary?[['ทราบ','ทราบ'],['อนุมัติ','อนุมัติ']]:[['เห็นชอบ','เห็นชอบ']];return `<div class="footline no-break"><p><b>${summary?'คำสั่งของผู้อำนวยการ':'ความเห็น / คำสั่งของผู้มีอำนาจ'}</b></p><p>${choices.map(([v,label])=>`${decision===v?'☒':'☐'} ${label}`).join('&nbsp;&nbsp;&nbsp;')}</p><p>....................................................................................................................</p>${sign(b.principal,b.principalTitle)}<p style="text-align:center">วันที่ ............................................</p></div>`;};
+  function headOfficerSection(b){return `<div class="footline no-break"><p><b>ความเห็นของหัวหน้าเจ้าหน้าที่</b></p><p>${b.headOfficerApprove?'☒':'☐'} เห็นชอบ &nbsp;&nbsp;&nbsp; ${b.headOfficerSigned?'☒':'☐'} ลงนามแล้ว</p>${sign(b.headOfficerName,b.headOfficerPosition||'หัวหน้าเจ้าหน้าที่')}<p style="text-align:center">วันที่ ${neat(thDate(b.headOfficerDate))}</p></div>`;}
+function docRequest(b){
+    if(b.route==='specific')return docSpecificRequest(b);
+    return docV804Request(b);
+  }
+  function docV804Request(b){
+    return `<article class="paper" data-doc="request">${heading(b,'รายงานขอซื้อ '+b.subject.replace(/^จัดซื้อ\s*/,' '),b.reqDate,b.docNo,true)}<p class="indent">ด้วย ${esc(b.requester)} ตำแหน่ง ${esc(b.reqPosition)} มีความประสงค์จะซื้อ ${esc(b.subject)} จำนวน ${b.items.length} รายการ สำหรับโครงการ/กิจกรรม ${esc(b.project)} โดยวิธีเฉพาะเจาะจง ประจำปีงบประมาณ พ.ศ. ${esc(b.fiscal)} โดยมีเหตุผลความจำเป็นว่า ${esc(b.reason)} ซึ่งมีรายละเอียดดังต่อไปนี้</p><p class="para-title">(1) รายละเอียดคุณลักษณะเฉพาะของพัสดุและขอบเขตงาน</p><p class="indent">รายละเอียดตามคุณลักษณะเฉพาะของพัสดุหรือขอบเขตของงานที่แนบ</p><p class="para-title">(2) วงเงินที่จะซื้อ</p><p class="indent">วงเงินงบประมาณ ${fmt(b.total)} บาท (${bahtText(b.total)}) โดยใช้จ่ายจากเงินงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. ${esc(b.fiscal)} จาก ${esc(b.fund)} ภายใต้โครงการ/กิจกรรม ${esc(b.project)}</p><p class="para-title">(3) ราคากลางของพัสดุที่จะซื้อ</p><p class="indent">ให้ถือวงเงินตามข้อ (2) เป็นราคากลางของพัสดุที่จะซื้อในครั้งนี้ จำนวน ${fmt(b.total)} บาท (${bahtText(b.total)})</p><p class="para-title">(4) ผู้รับผิดชอบในการจัดซื้อ</p><p class="indent">มอบหมายให้ ${esc(b.assigned)} ตำแหน่ง ${esc(b.assignedPosition)} เป็นผู้มีหน้าที่ดำเนินการจัดซื้อกับผู้ประกอบการที่มีอาชีพขายพัสดุโดยตรง และเป็นผู้ตรวจรับพัสดุในครั้งนี้</p><p class="indent">การดำเนินการจัดซื้อครั้งนี้ เป็นไปตามหนังสือคณะกรรมการวินิจฉัยปัญหาการจัดซื้อจัดจ้างและการบริหารพัสดุภาครัฐ ด่วนที่สุด ที่ กค (กวจ) 0405.2/ว 804 ลงวันที่ 12 พฤศจิกายน 2568 เรื่อง แนวทางปฏิบัติสำหรับการจัดซื้อวงเงินไม่เกิน 50,000 บาท</p><p class="indent">จึงเรียนมาเพื่อโปรดพิจารณา หากเห็นชอบได้โปรด (1) เห็นชอบรายละเอียดคุณลักษณะเฉพาะของพัสดุหรือขอบเขตของงานตามข้อ (1) และ (2) อนุมัติให้ดำเนินการและมอบหมายผู้รับผิดชอบดำเนินการจัดซื้อตามรายละเอียดในรายงานขอซื้อดังกล่าวข้างต้น</p>${sign(b.requester,b.reqPosition,'เจ้าหน้าที่')}${headOfficerSection(b)}${approval(b,'request')}<p class="note">แบบร่างตามแนวทาง ว804 โปรดตรวจสอบการมอบอำนาจ การไม่แบ่งซื้อแบ่งจ้าง รายละเอียดคุณลักษณะเฉพาะ และข้อเท็จจริงก่อนลงนาม</p></article>`;
+  }
+    function docSpecificRequest(b){
+    return `<article class="paper" data-doc="request">${heading(b,'รายงานขอซื้อ '+b.subject.replace(/^จัดซื้อ\s*/,' '),b.reqDate,b.docNo)}<p class="indent">ด้วย ${esc(b.school)} มีความจำเป็นต้อง ${esc(b.subject)} โดยมีเหตุผลและความจำเป็นว่า ${esc(b.reason)} จึงขอรายงานการจัดซื้อพัสดุตามระเบียบกระทรวงการคลังว่าด้วยการจัดซื้อจัดจ้างและการบริหารพัสดุภาครัฐ พ.ศ. 2560 และที่แก้ไขเพิ่มเติม ข้อ 22 ดังต่อไปนี้</p><p class="para-title">1. เหตุผลและความจำเป็น</p><p class="indent">${esc(b.reason)}</p><p class="para-title">2. รายละเอียดคุณลักษณะเฉพาะของพัสดุ</p><p class="indent">${esc(b.category)}จำนวน ${b.items.length} รายการ ตามบัญชีรายละเอียดพัสดุแนบท้าย</p><p class="para-title">3. ราคากลาง</p><p class="indent">${fmt(b.centralPrice)} บาท (${bahtText(b.centralPrice)}) โดยมีที่มา/หลักฐาน: ${esc(b.centralBasis)} (โปรดตรวจสอบเอกสารรองรับ)</p><p class="para-title">4. วงเงินที่จะซื้อ</p><p class="indent">${fmt(b.total)} บาท (${bahtText(b.total)}) จาก ${esc(b.fund)} ปีงบประมาณ พ.ศ. ${esc(b.fiscal)} โครงการ ${esc(b.project)}</p><p class="para-title">5. กำหนดเวลาที่ต้องการใช้และการส่งมอบ</p><p class="indent">ต้องการใช้วันที่ ${esc(thDate(b.useDate))} โดยกำหนดให้ส่งมอบภายใน ${esc(b.deliveryDays)} วัน ตามข้อตกลงหรือใบสั่งซื้อที่หน่วยงานออกจริง</p><p class="para-title">6. วิธีจัดซื้อและเหตุผล</p><p class="indent">เสนอใช้วิธีเฉพาะเจาะจงตามพระราชบัญญัติการจัดซื้อจัดจ้างฯ มาตรา 56 วรรคหนึ่ง (2) (ข) เนื่องจากวงเงินการซื้อครั้งนี้ไม่เกิน 500,000 บาท และดำเนินการตามระเบียบฯ ข้อ 79</p><p class="para-title">7. หลักเกณฑ์พิจารณาข้อเสนอ</p><p class="indent">${esc(b.criteria)}</p><p class="para-title">8. ข้อเสนออื่น ๆ</p><p class="indent">เสนอให้ ${esc(b.assigned)} ตำแหน่ง ${esc(b.assignedPosition)} ดำเนินการตามอำนาจหน้าที่และคำสั่งที่เกี่ยวข้อง${b.extraConsideration?' โดยมีรายละเอียดเพิ่มเติม: '+esc(b.extraConsideration):''} ทั้งนี้ให้แต่งตั้งผู้ตรวจรับตามหลักเกณฑ์และคำสั่งจริงก่อนตรวจรับ</p><p class="indent">จึงเรียนมาเพื่อโปรดพิจารณาให้ความเห็นชอบการจัดซื้อตามรายละเอียดข้างต้น</p>${sign(b.requester,b.reqPosition)}${approval(b)}<p class="note">แบบร่างจากข้อมูลผู้กรอก โปรดตรวจสอบการกำหนดราคากลาง ผู้มีอำนาจลงนาม และความครบถ้วนใน e-GP ตามกรณี ก่อนใช้งาน</p></article>`;
+  }
+    function docSpecs(b){const v804=b.route==='v804';return `<article class="paper" data-doc="spec"><h4>${v804?'รายละเอียดคุณลักษณะเฉพาะของพัสดุที่จะดำเนินการซื้อ':'บัญชีรายละเอียดคุณลักษณะเฉพาะและรายการพัสดุ'}</h4><p><b>หน่วยงาน</b> ${esc(b.school)}</p><p><b>งานจัดซื้อวัสดุโครงการ/กิจกรรม</b> ${esc(b.project)}</p><p><b>เรื่อง</b> ${esc(b.subject)} / <b>จำนวน</b> ${b.items.length} รายการ</p><p><b>แนบท้ายบันทึกข้อความ ที่</b> ${neat(b.docNo)} <b>ลงวันที่</b> ${neat(thDate(b.reqDate))}</p>${tableItems(b.items)}<p><b>วงเงินรวม</b> ${fmt(b.total)} บาท (${bahtText(b.total)})</p><p><b>วันที่ต้องการใช้พัสดุ</b> ${esc(thDate(b.useDate))}</p><p class="note">รายละเอียดคุณลักษณะเฉพาะต้องไม่กำหนดเพื่อเอื้อประโยชน์แก่ผู้ประกอบการรายใดรายหนึ่ง และให้เจ้าหน้าที่ตรวจสอบความจำเป็น ความเหมาะสม และราคา</p>${sign(b.requester,b.reqPosition,v804?'ผู้รับผิดชอบจัดทำคุณลักษณะเฉพาะ':'ผู้จัดทำ')}</article>`;}
+  function actualFromDom(b){return b.items.map(i=>{const node=document.querySelector(`.actual-row[data-key="${i.key}"]`);return {...i,actualQty:node?toNum(node.querySelector('.actual-qty').value):NaN,actualPrice:node?toNum(node.querySelector('.actual-price').value):NaN,actualQtyRaw:node?node.querySelector('.actual-qty').value:'',actualPriceRaw:node?node.querySelector('.actual-price').value:''};});}
+function getAfter(b){
+    const items=actualFromDom(b);return {approvalRef:text('approvalRef'),approveDate:text('approveDate'),reportDate:text('reportDate'),summaryDocNo:text('summaryDocNo'),purchaseDate:text('purchaseDate'),vendor:text('vendor'),evidenceType:text('evidenceType'),evidenceBookNo:text('evidenceBookNo'),evidenceNo:text('evidenceNo'),evidenceDate:text('evidenceDate'),receivedDate:text('receivedDate'),inspectionDate:text('inspectionDate'),inspectionConfirm:$('inspectionConfirm').checked,paymentMode:text('paymentMode'),loanContractNo:text('loanContractNo'),loanDate:text('loanDate'),advanceAmount:toNum($('advanceAmount').value),advanceAmountRaw:text('advanceAmount'),paymentConfirm:$('paymentConfirm').checked,summaryDecision:text('summaryDecision'),officialHolidays:text('officialHolidays'),quotationRef:text('quotationRef'),quotationDate:text('quotationDate'),items,total:items.reduce((sum,i)=>sum+i.actualQty*i.actualPrice,0)};
+  }
+  function afterErrors(b,a){
+    const errors=beforeErrors(b);
+    if(!a.approvalRef||!a.approveDate)errors.push('กรุณากรอกเลขที่/หลักฐานการอนุมัติและวันที่อนุมัติจริง');
+    if(!a.purchaseDate||!a.vendor)errors.push('กรุณากรอกวันที่ซื้อจริงและชื่อผู้ประกอบการ');
+    if(!a.reportDate)errors.push('กรุณาระบุวันที่จัดทำรายงานหลังซื้อ');
+    if(a.purchaseDate&&a.reportDate&&a.reportDate<a.purchaseDate)errors.push('วันที่รายงานต้องไม่ก่อนวันที่ซื้อจริง');
+    if(!a.evidenceNo||!a.evidenceDate||!a.evidenceType)errors.push('กรุณากรอกประเภท เลขที่ และวันที่หลักฐานการซื้อ');
+    if(b.route==='v804'&&!a.evidenceBookNo)errors.push('กรุณากรอกเล่มที่ใบเสร็จรับเงิน หรือระบุ “ไม่มี” ตามหลักฐานจริง');
+    if(!a.inspectionDate||!a.inspectionConfirm)errors.push('กรุณายืนยันการตรวจรับจริงให้ครบ');
+    if(b.route==='v804'&&!a.receivedDate)errors.push('กรุณาระบุวันที่ได้รับมอบพัสดุครบถ้วน');
+    if(b.route==='v804'&&!a.paymentConfirm)errors.push('กรุณายืนยันว่าชำระเงินให้ผู้ขายเรียบร้อยแล้วตามหลักฐานจริง');
+    if(b.route==='v804'&&a.paymentMode==='cash'){
+      if(!a.advanceAmountRaw||a.advanceAmount<=0)errors.push('กรุณาระบุจำนวนเงินสดที่ทดรองจ่ายจริง');
+      else if(Math.abs(a.advanceAmount-a.total)>0.01)errors.push('ยอดเงินสดที่ทดรองจ่ายต้องตรงกับยอดจัดซื้อจริง/ยอดขอเบิกตามใบเสร็จ โปรดตรวจสอบจำนวนเงิน');
+    }
+    if(b.route==='v804'&&a.paymentMode==='loan'&&(!a.loanContractNo||!a.loanDate))errors.push('กรุณาระบุเลขที่และวันที่สัญญาเงินยืม');
+    for(const i of a.items)if(!i.actualQtyRaw||i.actualQty<=0||!i.actualPriceRaw||i.actualPrice<=0)errors.push(`รายการที่ ${i.index}: กรุณากรอกจำนวนซื้อจริงและราคาจริงให้ครบ`);
+    if(a.total>500000.00001)errors.push('ยอดซื้อจริงเกิน 500,000 บาท ไม่อยู่ในขอบเขตระบบ');
+    if(b.route==='v804'&&a.total>50000.00001)errors.push('ยอดซื้อจริงเกิน 50,000 บาท ไม่สามารถใช้รายงานตามแนวทาง ว804');
+    if(b.route==='specific'&&(!a.quotationRef||!a.quotationDate))errors.push('กรุณากรอกเลขที่และวันที่ใบเสนอราคา/หลักฐานการเจรจาตามจริง');
+    if(a.total>b.total+.00001)errors.push('ยอดซื้อจริงสูงกว่าวงเงินที่เสนออนุมัติ กรุณาตรวจสอบหรือดำเนินการอนุมัติใหม่');
+    if(a.approveDate&&a.purchaseDate&&a.approveDate>a.purchaseDate)errors.push('วันที่ซื้อจริงต้องไม่ก่อนวันที่อนุมัติ');
+    if(a.purchaseDate&&a.inspectionDate&&a.inspectionDate<a.purchaseDate)errors.push('วันที่ตรวจรับต้องไม่ก่อนวันที่ซื้อ');
+    if(a.purchaseDate&&a.receivedDate&&a.receivedDate<a.purchaseDate)errors.push('วันที่ได้รับมอบพัสดุต้องไม่ก่อนวันที่ซื้อ');
+    if(a.receivedDate&&a.inspectionDate&&a.inspectionDate<a.receivedDate)errors.push('วันที่ตรวจรับต้องไม่ก่อนวันที่ได้รับมอบพัสดุครบถ้วน');
+    if(a.purchaseDate&&a.evidenceDate&&a.evidenceDate<a.purchaseDate)errors.push('วันที่หลักฐานก่อนวันที่ซื้อ โปรดตรวจสอบ');
+    if(b.route==='v804'&&a.purchaseDate&&a.reportDate){const d=deadlineFor(a.purchaseDate,a.reportDate,a.officialHolidays);if(d.invalid.length)errors.push('รูปแบบวันหยุดไม่ถูกต้อง: '+d.invalid.join(', ')+' (ใช้ YYYY-MM-DD)');if(d.late)errors.push(`วันที่รายงานเกินกำหนด 5 วันทำการตามข้อมูลวันหยุดที่กรอก (กำหนดภายใน ${thDate(d.dueDate)}; ปัจจุบันนับได้ ${d.days} วันทำการ)`);}
+    return errors;
+  }
+  function docSummary(b,a){
+    if(b.route==='specific')return docSpecificSummary(b,a);
+    const payLine=a.paymentMode==='loan'?`ได้ใช้เงินยืมตามสัญญาเลขที่ ${esc(a.loanContractNo)} ลงวันที่ ${esc(thDate(a.loanDate))} ชำระให้ผู้ขายเรียบร้อยแล้ว`:`ได้ใช้เงินสดสำรองจ่าย จำนวน ${fmt(a.advanceAmount)} บาท (${bahtText(a.advanceAmount)}) ชำระให้ผู้ขายเรียบร้อยแล้ว`;
+    const deadline=deadlineFor(a.purchaseDate,a.reportDate,a.officialHolidays);
+    return `<article class="paper" data-doc="summary">${heading(b,'รายงานสรุปผลการจัดซื้อ '+b.subject.replace(/^จัดซื้อ\s*/,' ')+' โดยวิธีเฉพาะเจาะจง และอนุมัติเบิกจ่าย',a.reportDate,a.summaryDocNo)}<p class="para-title">1. เรื่องเดิม</p><p class="indent">ตามที่ ${esc(b.requester)} เจ้าหน้าที่ ได้เสนอรายงานขอซื้อ ${esc(b.subject)} สำหรับโครงการ/กิจกรรม ${esc(b.project)} และได้รับความเห็นชอบ/อนุมัติตาม ${esc(a.approvalRef)} ลงวันที่ ${esc(thDate(a.approveDate))} ภายในวงเงิน ${fmt(b.total)} บาท (${bahtText(b.total)}) โดยมอบหมาย ${esc(b.assigned)} ตำแหน่ง ${esc(b.assignedPosition)} เป็นผู้ดำเนินการจัดซื้อและตรวจรับพัสดุนั้น</p><p class="para-title">2. ผลการดำเนินการจัดซื้อ</p><p class="indent">เจ้าหน้าที่ผู้รับผิดชอบได้ดำเนินการจัดซื้อกับผู้ประกอบการ ${esc(a.vendor)} ซึ่งประกอบอาชีพขายพัสดุโดยตรง เมื่อวันที่ ${esc(thDate(a.purchaseDate))} โดยมีรายการ จำนวน และจำนวนเงินที่จัดซื้อ ดังนี้</p>${tableItems(a.items,true)}<p>รวมเป็นเงิน ${fmt(a.total)} บาท (${bahtText(a.total)}) ซึ่งเป็นราคาที่รวมภาษีมูลค่าเพิ่มและค่าใช้จ่ายทั้งปวงไว้แล้ว ตาม ${esc(a.evidenceType)} เล่มที่ ${esc(a.evidenceBookNo)} เลขที่ ${esc(a.evidenceNo)} ลงวันที่ ${esc(thDate(a.evidenceDate))}</p><p class="indent">${payLine} และได้รับมอบพัสดุไว้ครบถ้วนเรียบร้อยแล้วเมื่อวันที่ ${esc(thDate(a.receivedDate))}</p><p class="para-title">3. การตรวจรับและข้อเสนอ</p><p class="indent">ผู้ได้รับมอบหมายได้ตรวจรับพัสดุครบถ้วนถูกต้องเมื่อวันที่ ${esc(thDate(a.inspectionDate))} ตามข้อเท็จจริงและหลักฐานการตรวจรับ จึงเรียนมาเพื่อโปรดทราบและขออนุมัติเบิกจ่ายต่อไป</p><p class="note">กำหนดเวลารายงาน: จัดทำวันที่ ${esc(thDate(a.reportDate))} หลังวันที่ซื้อ ${deadline.days} วันทำการ (กำหนดภายใน ${esc(thDate(deadline.dueDate))}; คำนวณจากวันหยุดที่ผู้ใช้ระบุและไม่นับเสาร์–อาทิตย์)</p>${signPair(sign(b.assigned,b.assignedPosition,'ผู้ตรวจรับพัสดุ (ผู้ได้รับมอบหมาย)'),sign(b.requester,b.reqPosition,'เจ้าหน้าที่'))}${approval(b,'summary')}<p class="note">แบบร่างตามแนวทาง ว804 โปรดตรวจสอบเอกสารการชำระเงิน การรับมอบพัสดุ หลักฐานการตรวจรับ และอำนาจอนุมัติก่อนลงนาม</p></article>`;
+  }
+  function docSpecificSummary(b,a){
+    return `<article class="paper" data-doc="summary">${heading(b,'รายงานผลการจัดซื้อโดยวิธีเฉพาะเจาะจง '+b.subject.replace(/^จัดซื้อ\s*/,' '),a.reportDate,a.summaryDocNo)}<p class="para-title">1. เรื่องเดิม</p><p class="indent">ตามที่ผู้มีอำนาจให้ความเห็นชอบการจัดซื้อ ${esc(b.subject)} ภายในวงเงิน ${fmt(b.total)} บาท ตาม ${esc(a.approvalRef)} ลงวันที่ ${esc(thDate(a.approveDate))} โดยวิธีเฉพาะเจาะจงตามพระราชบัญญัติการจัดซื้อจัดจ้างฯ มาตรา 56 วรรคหนึ่ง (2) (ข) และระเบียบฯ ข้อ 79 นั้น</p><p class="para-title">2. ผลการดำเนินการจัดซื้อ</p><p class="indent">ได้ดำเนินการเจรจาตกลงราคากับ ${esc(a.vendor)} ตามใบเสนอราคา/หลักฐาน ${esc(a.quotationRef)} ลงวันที่ ${esc(thDate(a.quotationDate))} และดำเนินการจัดซื้อเมื่อวันที่ ${esc(thDate(a.purchaseDate))} โดยมีรายการและราคาที่ตกลง ดังนี้</p>${tableItems(a.items,true)}<p>รวมเป็นเงิน ${fmt(a.total)} บาท (${bahtText(a.total)}) ซึ่งรวมภาษีและค่าใช้จ่ายทั้งปวงตามหลักฐาน ${esc(a.evidenceType)} เลขที่ ${esc(a.evidenceNo)} ลงวันที่ ${esc(thDate(a.evidenceDate))}</p><p class="para-title">3. การตรวจรับและข้อเสนอ</p><p class="indent">มีการตรวจรับเมื่อวันที่ ${esc(thDate(a.inspectionDate))} ตามหลักฐานที่ได้ตรวจสอบแล้ว จึงเรียนมาเพื่อโปรดพิจารณารับทราบผลการดำเนินการ และดำเนินการเบิกจ่ายตามระเบียบต่อไป</p>${signPair(sign(b.assigned,b.assignedPosition,'ผู้ตรวจรับพัสดุ (ผู้ได้รับมอบหมาย)'),sign(b.requester,b.reqPosition,'เจ้าหน้าที่'))}${approval(b,'summary')}<p class="note">เอกสารนี้เป็นร่างประกอบข้อเท็จจริง ต้องตรวจสอบเอกสาร e-GP/ใบสั่งซื้อ ผู้มีอำนาจดำเนินการ และรายงานตรวจรับจริงตามกรณี ไม่ใช้แทนเอกสารที่ระบบ e-GP กำหนด</p></article>`;
+  }
+  function docReceiptCover(b,a){return `<article class="paper" data-doc="receipt-cover"><h4>ใบติดใบเสร็จรับเงิน</h4><p>จำนวนเงินตามใบเสร็จรับเงิน เล่มที่ ${esc(a.evidenceBookNo)} เลขที่ ${esc(a.evidenceNo)} ลงวันที่ ${esc(thDate(a.evidenceDate))}</p><p style="margin-top:12mm">ข้าพเจ้าได้ทดรองจ่ายไปก่อนแล้ว เป็นจำนวนเงิน ${fmt(a.advanceAmount)} บาท (${bahtText(a.advanceAmount)})</p><p>และได้รับมอบพัสดุไว้ครบถ้วนถูกต้องแล้ว ข้าพเจ้าขอเบิกเงินจัดซื้อ ${esc(b.subject)} โดยวิธีเฉพาะเจาะจง จำนวนเงิน ${fmt(a.total)} บาท (${bahtText(a.total)})</p><div style="margin-top:22mm">${sign(b.requester,b.reqPosition,'ผู้ขอเบิก')}</div><p class="note">แนบกับใบเสร็จรับเงินจริง ตรวจสอบยอดเงิน วันที่ เล่มที่/เลขที่ และหลักฐานการรับมอบพัสดุก่อนเสนอเบิก</p></article>`;}
+  function docNegotiation(b,a){
+    return `<article class="paper" data-doc="negotiation">${heading(b,'บันทึกผลการเจรจาตกลงราคา (วิธีเฉพาะเจาะจง)',a.reportDate,'')}<p class="indent">ตามที่ได้รับความเห็นชอบให้จัดซื้อ ${esc(b.subject)} โดยวิธีเฉพาะเจาะจง วงเงิน ${fmt(b.total)} บาท ตาม ${esc(a.approvalRef)} ลงวันที่ ${esc(thDate(a.approveDate))} นั้น</p><p class="indent">ผู้รับผิดชอบได้เจรจาตกลงราคากับผู้ประกอบการ ${esc(a.vendor)} ตามใบเสนอราคา/หลักฐานเลขที่ ${esc(a.quotationRef)} ลงวันที่ ${esc(thDate(a.quotationDate))} และมีรายละเอียดราคาที่เสนอสำหรับการซื้อ ดังนี้</p>${tableItems(a.items,true)}<p class="indent">รวมจำนวนเงิน ${fmt(a.total)} บาท (${bahtText(a.total)}) ซึ่งไม่เกินวงเงินที่ได้รับความเห็นชอบ จึงเสนอผลการเจรจาไว้เป็นหลักฐานประกอบการดำเนินการตามระเบียบฯ ข้อ 79</p>${sign(b.assigned,b.assignedPosition)}<p class="note">กรุณาเทียบกับหลักฐานการเจรจาจริง ตรวจสอบข้อมูลการเสนอราคา และห้ามถือว่าเป็นคำสั่งซื้อ/อนุมัติโดยอัตโนมัติ</p></article>`;
+  }
+  function docInspection(b,a){
+    return `<article class="paper" data-doc="inspection">${heading(b,'บันทึกรายงานการตรวจรับพัสดุ',a.reportDate,'')}<p class="indent">ตามที่ ${esc(b.school)} ได้จัดซื้อ ${esc(b.subject)} จาก ${esc(a.vendor)} ตาม ${esc(a.evidenceType)} เลขที่ ${esc(a.evidenceNo)} ลงวันที่ ${esc(thDate(a.evidenceDate))} ในวงเงิน ${fmt(a.total)} บาท นั้น</p><p class="indent">ผู้รับผิดชอบตามคำสั่งที่ได้รับมอบหมายจริง ได้ตรวจสอบรายการพัสดุและตรวจรับเมื่อวันที่ ${esc(thDate(a.inspectionDate))} รายการดังนี้</p>${tableItems(a.items,true)}<p class="indent">จากข้อเท็จจริงที่ผู้จัดทำยืนยันในแบบฟอร์ม พัสดุมีจำนวนและรายละเอียดถูกต้องตามหลักฐานการซื้อ จึงจัดทำบันทึกนี้ไว้ประกอบการตรวจรับและเสนอเพื่อพิจารณาตามระเบียบ</p>${sign(b.assigned,b.assignedPosition)}<p class="note">ใช้เป็นแบบร่างเท่านั้น: ต้องตรวจสอบคำสั่งแต่งตั้งผู้ตรวจรับ เอกสารสัญญา/ใบสั่งซื้อและผลตรวจจริง รวมถึงรูปแบบรายงานที่หน่วยงานกำหนดก่อนลงนาม</p></article>`;
+  }
+    function proofDocs(){return actualImages.map((im,i)=>`<article class="paper" data-doc="proof"><h4>สำเนาภาพหลักฐานการจัดซื้อ — ${i+1}</h4><p style="font-size:13pt">ชื่อไฟล์: ${esc(im.name)}</p><img class="assetimg" src="${im.data}" alt="ภาพหลักฐาน ${i+1}"><p class="note">โปรดตรวจสอบความคมชัดและการรับรองสำเนาเอกสารตามที่หน่วยงานกำหนด</p></article>`).join('');}
+  function renderActualRows(preserve=true){const previous={};if(preserve){document.querySelectorAll('.actual-row').forEach(el=>{previous[el.dataset.key]={q:el.querySelector('.actual-qty').value,p:el.querySelector('.actual-price').value};});}const items=getItems();$('actualItems').innerHTML=items.map(i=>`<div class="item actual-row" data-key="${i.key}" style="margin-bottom:9px"><strong>${i.index}. ${esc(i.name||'รายการยังไม่ระบุ')}</strong><div class="fields" style="margin-top:8px"><div class="field"><label>จำนวนซื้อจริง (${esc(i.unit||'หน่วย')})</label><input type="number" min="0.01" step="any" class="actual-qty" placeholder="ระบุจำนวนจริง" value="${esc(previous[i.key]?.q||'')}"></div><div class="field"><label>ราคาต่อหน่วยจริง (บาท)</label><input type="number" min="0.01" step="0.01" class="actual-price" placeholder="ระบุราคาจริง" value="${esc(previous[i.key]?.p||'')}"></div></div></div>`).join('');updateActualTotal();}
+  function updateActualTotal(){const b=getBase(),a=getAfter(b);$('actualTotal').textContent=fmt(a.total);updateDeadlineStatus();}
+  function updatePaymentUI(b=getBase()){const cash=text('paymentMode')!=='loan';const v804=b.route==='v804';$('v804PaymentGroup').classList.toggle('hide',!v804);$('v804DeadlineGroup').classList.toggle('hide',!v804);$('loanContractWrap').classList.toggle('hide',cash);$('loanDateWrap').classList.toggle('hide',cash);$('advanceAmountWrap').classList.toggle('hide',!cash);$('selReceiptCoverWrap').classList.toggle('hide',!(v804&&cash));if(!(v804&&cash))$('selReceiptCover').checked=false;}
+  function updateDeadlineStatus(){const purchase=text('purchaseDate'),report=text('reportDate'),raw=text('officialHolidays'),box=$('deadlineStatus');if(!purchase||!report){box.className='alert';box.textContent='กรอกวันที่ซื้อจริงและวันที่รายงานเพื่อคำนวณกำหนด 5 วันทำการ';return;}const d=deadlineFor(purchase,report,raw);if(d.invalid.length){box.className='alert error';box.textContent='รูปแบบวันหยุดไม่ถูกต้อง: '+d.invalid.join(', ')+' กรุณาใช้ YYYY-MM-DD';return;}if(!d.dueDate){box.className='alert';box.textContent='กรุณาตรวจวันที่ซื้อจริง';return;}box.className='alert '+(d.late?'error':'good');box.textContent=`กำหนดรายงานภายใน ${thDate(d.dueDate)} · วันที่รายงานนับได้ ${d.days} วันทำการหลังซื้อ ${d.late?'เกินกำหนด 5 วันทำการ':'อยู่ภายในกำหนด'} (ไม่นับเสาร์–อาทิตย์และวันหยุดที่ระบุ)`;}
+  $('actualItems').addEventListener('input',updateActualTotal);
+  function setStage(next){stage=next;for(const name of ['before','after','guide'])$(name+'Stage').classList.toggle('on',name===stage);document.querySelectorAll('.step-btn').forEach(b=>{const active=b.dataset.stage===stage;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));});const map={before:['สร้างชุดเอกสารก่อนจัดซื้อ','กรอก 5 กลุ่มข้อมูล แล้วกดตรวจเอกสารก่อนสั่งพิมพ์ PDF'],after:['รายงานสรุปผลหลังจัดซื้อ','กรอกข้อเท็จจริงที่เกิดขึ้นหลังได้รับอนุมัติและซื้อแล้วเท่านั้น'],guide:['วิธีใช้งานและตั้งค่า','ไม่มีฐานข้อมูล ข้อมูลชั่วคราวไม่ถูกบันทึกเมื่อปิดหน้านี้']};$('paneTitle').textContent=map[stage][0];$('paneSubtitle').textContent=map[stage][1];if(next==='after')renderActualRows(true);}
+  document.querySelectorAll('[data-stage]').forEach(b=>b.addEventListener('click',()=>setStage(b.dataset.stage)));
+function selected(){return {request:$('selRequest').checked,spec:$('selSpec').checked,summary:$('selSummary').checked,proof:$('selProof').checked,receiptCover:$('selReceiptCover').checked,negotiation:$('selNegotiation').checked,inspection:$('selInspection').checked};}
+  function renderPreview(options={}){
+    const b=getBase(),sel=selected(),force=options.force||false;
+    const preErrors=beforeErrors(b),a=getAfter(b),postErrors=afterErrors(b,a);
+    const hasBefore=preErrors.length===0,hasAfter=postErrors.length===0;
+    beforeReady=hasBefore;afterReady=hasAfter;
+    let html='',count=0;
+    if(hasBefore){if(sel.request){html+=docRequest(b);count++;}if(sel.spec){html+=docSpecs(b);count++;}}
+    if(hasAfter){
+      if(sel.summary){html+=docSummary(b,a);count++;}
+      if(b.route==='v804'&&a.paymentMode==='cash'&&sel.receiptCover){html+=docReceiptCover(b,a);count++;}
+      if(b.route==='specific'&&sel.negotiation){html+=docNegotiation(b,a);count++;}
+      if(b.route==='specific'&&sel.inspection){html+=docInspection(b,a);count++;}
+      if(sel.proof&&actualImages.length){html+=proofDocs();count+=actualImages.length;}
+    }
+    if(!count){$('previewArea').innerHTML=`<div class="empty">📄<h3>ยังไม่มีเอกสารที่พร้อมสร้าง</h3><p>${hasBefore?'เลือกชุดเอกสารที่ต้องการ หรือกรอกข้อมูลหลังซื้อเพื่อจัดทำรายงาน':'กรอกข้อมูลให้ครบตามรายการที่แจ้ง แล้วกดตรวจเอกสาร'}</p></div>`;} else $('previewArea').innerHTML=html;
+    $('printBtn').disabled=count===0;
+    $('previewStatus').textContent=count?`พร้อมพิมพ์ ${count} ฉบับ · โปรดตรวจรายละเอียดราชการก่อนใช้จริง`:'กรุณากรอกข้อมูลให้ครบ';
+    $('docBadge').textContent=count?`${count} ฉบับ`:'ยังไม่พร้อม';
+    if(force&&postErrors.length&&sel.summary)showErrors('afterErrors',postErrors);
+    return {hasBefore,hasAfter,count};
+  }
+  function buildBefore(){const b=getBase(),errors=beforeErrors(b);showErrors('beforeErrors',errors);if(errors.length){setStage('before');return;}$('selRequest').checked=true;$('selSpec').checked=true;$('selSummary').checked=false;$('selNegotiation').checked=false;$('selInspection').checked=false;renderPreview();document.querySelector('.side').scrollIntoView({behavior:'smooth',block:'start'});}
+  function buildAfter(){const b=getBase(),a=getAfter(b),errs=afterErrors(b,a);showErrors('afterErrors',errs);if(errs.length)return;$('selRequest').checked=true;$('selSpec').checked=true;$('selSummary').checked=true;$('selReceiptCover').checked=b.route==='v804'&&text('paymentMode')==='cash';$('selNegotiation').checked=b.route==='specific';$('selInspection').checked=b.route==='specific';renderPreview();document.querySelector('.side').scrollIntoView({behavior:'smooth',block:'start'});}
+    $('buildBefore').addEventListener('click',buildBefore);$('buildAfter').addEventListener('click',buildAfter);
+  $('refreshPreview').addEventListener('click',()=>{const b=getBase(),e=beforeErrors(b);showErrors('beforeErrors',e);const s=selected();if(s.summary)showErrors('afterErrors',afterErrors(b,getAfter(b)));renderPreview();});
+  ['selRequest','selSpec','selSummary','selProof','selReceiptCover','selNegotiation','selInspection'].forEach(x=>$(x).addEventListener('change',renderPreview));
+  $('printBtn').addEventListener('click',async()=>{const b=getBase(),s=selected();const errs=beforeErrors(b);const aa=getAfter(b);if(errs.length||((s.summary||s.receiptCover||(b.route==='specific'&&(s.negotiation||s.inspection))||(s.proof&&actualImages.length))&&afterErrors(b,aa).length)){showErrors('beforeErrors',errs);if(s.summary||s.receiptCover||s.negotiation||s.inspection||(s.proof&&actualImages.length))showErrors('afterErrors',afterErrors(b,aa));alert('กรุณาตรวจสอบข้อมูลที่จำเป็นก่อนสร้าง PDF');return;}
+    const result=renderPreview();if(!result.count){alert('ยังไม่มีเอกสารให้พิมพ์');return;}
+    const images=[...$('previewArea').querySelectorAll('img')];await Promise.all(images.map(im=>im.complete?Promise.resolve():new Promise(resolve=>{im.addEventListener('load',resolve,{once:true});im.addEventListener('error',resolve,{once:true});setTimeout(resolve,3500);})));const garudas=[...$('previewArea').querySelectorAll('img.garuda')];if(garudas.some(g=>!g.complete||g.naturalWidth===0)){alert('ไม่สามารถโหลดภาพตราครุฑได้ กรุณาไปที่ “วิธีใช้และตั้งค่า” แล้วเลือกภาพตราครุฑจากเครื่องก่อนพิมพ์');return;}
+    window.print();});
+  $('paymentMode').addEventListener('change',()=>{updatePaymentUI();updateDeadlineStatus();renderPreview();});
+  $('useActualAmount').addEventListener('click',()=>{const a=getAfter(getBase());$('advanceAmount').value=a.total>0?a.total.toFixed(2):'';renderPreview();});
+  ['purchaseDate','reportDate','officialHolidays'].forEach(id=>$(id).addEventListener('input',()=>{updateDeadlineStatus();}));
+  ['evidenceType','evidenceBookNo','evidenceNo','evidenceDate','receivedDate','inspectionDate','paymentConfirm','advanceAmount','loanContractNo','loanDate','summaryDecision'].forEach(id=>$(id).addEventListener('change',()=>{updateDeadlineStatus();renderPreview();}));
+  ['headOfficerName','headOfficerPosition','headOfficerDate','headOfficerApprove','headOfficerSigned','requestDecision'].forEach(id=>$(id).addEventListener('change',renderPreview));
+  $('school').addEventListener('input',()=>$('schoolHeader').textContent=text('school')||'โรงเรียน');
+  $('garudaPreview').addEventListener('load',()=>$('garudaStatus').textContent='ภาพตราครุฑพร้อมใช้งาน โปรดตรวจสอบว่าเป็นตราราชการชนิดที่ถูกต้อง');
+  $('garudaPreview').addEventListener('error',()=>$('garudaStatus').textContent='โหลดภาพอัตโนมัติไม่ได้ กรุณาเลือกไฟล์ภาพจากเครื่อง');
+  $('schoolLogoUpload').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;if(!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size>6*1024*1024){alert('กรุณาเลือกไฟล์โลโก้ PNG/JPG/WebP ขนาดไม่เกิน 6 MB');e.target.value='';return;}const reader=new FileReader();reader.onload=()=>{schoolLogoSrc=reader.result;$('schoolLogoHeader').src=schoolLogoSrc;$('schoolLogoPreview').src=schoolLogoSrc;$('schoolLogoStatus').textContent='กำลังใช้โลโก้ที่เลือกจากเครื่อง (ชั่วคราวในหน้านี้)';};reader.readAsDataURL(f);});
+  $('garudaUpload').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;if(!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size>6*1024*1024){alert('กรุณาเลือกไฟล์ PNG/JPG/WebP ขนาดไม่เกิน 6 MB');e.target.value='';return;}const reader=new FileReader();reader.onload=()=>{garudaSrc=reader.result;$('garudaPreview').src=garudaSrc;renderPreview();};reader.readAsDataURL(f);});
+  $('fontUpload').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;if(!/\.(ttf|otf)$/i.test(f.name)||f.size>10*1024*1024){alert('กรุณาเลือก .ttf/.otf ขนาดไม่เกิน 10MB');return;}try{const face=new FontFace('UserSarabun',await f.arrayBuffer());await face.load();document.fonts.add(face);const sheet=document.getElementById('userFontRule')||document.createElement('style');sheet.id='userFontRule';sheet.textContent='.paper{font-family:"UserSarabun","TH Sarabun PSK","TH Sarabun New",serif!important}';document.head.appendChild(sheet);$('fontStatus').textContent=`โหลดฟอนต์ “${f.name}” สำเร็จ (ใช้ชั่วคราวในหน้านี้)`;}catch(err){$('fontStatus').textContent='โหลดฟอนต์ไม่ได้: '+err.message;}});
+  $('attachments').addEventListener('change',async e=>{const files=[...(e.target.files||[])];if(files.length>8){alert('กรุณาเลือกไม่เกิน 8 ภาพต่อครั้ง');e.target.value='';return;}actualImages=[];for(const f of files){if(!['image/png','image/jpeg','image/webp'].includes(f.type)||f.size>6*1024*1024){alert('ภาพต้องเป็น PNG/JPG/WebP และไม่เกิน 6 MB ต่อไฟล์');continue;}const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(f);});actualImages.push({name:f.name,data});}$('attachmentList').textContent=actualImages.length?`แนบ ${actualImages.length} ภาพ (ยังไม่บันทึก/อัปโหลด)`:'ยังไม่มีภาพที่แนบ';renderPreview();});
+  $('clearAll').addEventListener('click',()=>{if(!confirm('ล้างข้อมูลแบบฟอร์มทั้งหมดในหน้านี้? เอกสารที่บันทึก PDF ลงเครื่องไว้แล้วจะไม่ถูกลบ'))return;location.reload();});
 
-        <!-- NEW! Section: Annual Total Average (8 Subject Groups) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div class="glass-card bg-white border-l-8 border-slate-300">
-                <p class="text-sm font-bold text-gray-500 uppercase">ค่าเฉลี่ยรวม 8 กลุ่มสาระฯ 2566</p>
-                <div class="mt-2 flex items-baseline gap-2">
-                    <span class="stat-value text-slate-600" id="avg66">--</span>
-                    <span class="text-lg font-bold text-slate-400">%</span>
-                </div>
-                <p class="text-xs text-gray-400 mt-2">ฐานข้อมูลปีเริ่มต้น</p>
-            </div>
-            <div class="glass-card bg-white border-l-8 border-indigo-300">
-                <p class="text-sm font-bold text-gray-500 uppercase">ค่าเฉลี่ยรวม 8 กลุ่มสาระฯ 2567</p>
-                <div class="mt-2 flex items-baseline gap-2">
-                    <span class="stat-value text-indigo-600" id="avg67">--</span>
-                    <span class="text-lg font-bold text-indigo-400">%</span>
-                </div>
-                <p class="text-xs text-green-500 mt-2 font-bold" id="diff67">↑ --</p>
-            </div>
-            <div class="glass-card bg-blue-50 border-l-8 border-blue-600">
-                <p class="text-sm font-bold text-blue-800 uppercase">ค่าเฉลี่ยรวม 8 กลุ่มสาระฯ 2568</p>
-                <div class="mt-2 flex items-baseline gap-2">
-                    <span class="stat-value text-blue-700" id="avg68">--</span>
-                    <span class="text-lg font-bold text-blue-500">%</span>
-                </div>
-                <p class="text-xs text-blue-600 mt-2 font-bold" id="diff68">↑ --</p>
-            </div>
-        </div>
-
-        <!-- Section 1: GPA Development Trend -->
-        <div class="glass-card mb-10">
-            <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                <span class="bg-blue-100 p-2 rounded-lg mr-3 text-blue-600">📈</span> แนวโน้มการพัฒนาต่อเนื่อง 3 ปี (GPA รายวิชา)
-            </h2>
-            <div class="h-[350px]">
-                <canvas id="lineChart"></canvas>
-            </div>
-        </div>
-
-        <!-- Section 2: Alignment Analysis -->
-        <div class="glass-card mb-10 border-2 border-indigo-100 shadow-lg">
-            <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-                <span class="bg-indigo-100 p-2 rounded-lg mr-3 text-indigo-600">⚖️</span> วิเคราะห์ความสอดคล้อง: GPA vs O-NET (ม.6 ปี 2567)
-            </h2>
-            <p class="text-sm text-gray-500 mb-6">เปรียบเทียบร้อยละผลสัมฤทธิ์ (เกรด 3 ขึ้นไป) กับคะแนนเฉลี่ย O-NET เพื่อตรวจสอบมาตรฐานการวัดผล</p>
-            <div class="h-[400px]">
-                <canvas id="alignmentChart"></canvas>
-            </div>
-        </div>
-
-        <!-- Section 3: O-NET Deep Dive -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
-            <div class="glass-card border-t-4 border-blue-500">
-                <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                    <span class="bg-blue-100 p-2 rounded-lg mr-3 text-blue-600">🎓</span> O-NET ม.3 (2566 vs 2567)
-                </h2>
-                <div class="h-[300px]">
-                    <canvas id="onetM3Chart"></canvas>
-                </div>
-            </div>
-            <div class="glass-card border-t-4 border-green-500">
-                <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                    <span class="bg-green-100 p-2 rounded-lg mr-3 text-green-600">🎓</span> O-NET ม.6 (2566 vs 2567)
-                </h2>
-                <div class="h-[300px]">
-                    <canvas id="onetM6Chart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 4: INNOVATION STRATEGY -->
-        <div class="mb-10">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                <span class="bg-yellow-100 p-2 rounded-lg mr-3 text-yellow-600">💡</span> 5 กลยุทธ์นวัตกรรมยกระดับผลสัมฤทธิ์
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="glass-card idea-card bg-gradient-to-br from-white to-blue-50">
-                    <div class="text-3xl mb-4">🤖</div>
-                    <h3 class="font-bold text-blue-900 mb-2">AI-Driven Remediation</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">ใช้ระบบวิเคราะห์จุดบอดรายบุคคลรายสัปดาห์ ครูซ่อมเสริมเฉพาะจุด (Micro-teaching)</p>
-                </div>
-                <div class="glass-card idea-card bg-gradient-to-br from-white to-purple-50">
-                    <div class="text-3xl mb-4">🏆</div>
-                    <h3 class="font-bold text-purple-900 mb-2">Academic Peer Mentoring</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">ใช้พี่ ม.6 ที่ O-NET สูงกว่าค่าเฉลี่ยประเทศ มาเป็นติวเตอร์ช่วยน้อง ม.3</p>
-                </div>
-                <div class="glass-card idea-card bg-gradient-to-br from-white to-green-50">
-                    <div class="text-3xl mb-4">🎮</div>
-                    <h3 class="font-bold text-green-900 mb-2">Gamified O-NET Bootcamp</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">เปลี่ยนการติวเป็นภารกิจสะสมแต้มรายห้องเรียนเพื่อสร้างแรงจูงใจเชิงบวก</p>
-                </div>
-                <div class="glass-card idea-card bg-gradient-to-br from-white to-amber-50">
-                    <div class="text-3xl mb-4">📊</div>
-                    <h3 class="font-bold text-amber-900 mb-2">Mock Exam Simulation</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">ปรับปลายภาคเป็นข้อสอบมาตรฐานชาติ 60% เพื่อสร้างความคุ้นชินสนามสอบ</p>
-                </div>
-                <div class="glass-card idea-card bg-gradient-to-br from-white to-rose-50">
-                    <div class="text-3xl mb-4">🤝</div>
-                    <h3 class="font-bold text-rose-900 mb-2">Hybrid Resource Hub</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">คลังคลิปติวตัวชี้วัดต้องรู้ (Must know) เข้าถึงได้ 24 ชม. ผ่านระบบ Cloud</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-12 text-center text-gray-400 text-xs italic">
-            Strategic Dashboard & Innovation Plan | คำนวณค่าเฉลี่ยรวมอัตโนมัติจาก 8 กลุ่มสาระฯ
-        </div>
-    </div>
-
-    <script>
-        const subjectLabels = ['ภาษาไทย', 'คณิตศาสตร์', 'วิทยาศาสตร์ฯ', 'สังคมศึกษาฯ', 'สุขศึกษาฯ', 'ศิลปะ', 'การงานอาชีพ', 'ภาษาต่างประเทศ'];
-        const colors = ['#f59e0b', '#ef4444', '#3b82f6', '#8b5cf6', '#10b981', '#ec4899', '#06b6d4', '#6366f1'];
-        
-        const data66 = [62.57, 37.09, 55.75, 78.38, 81.57, 59.23, 73.90, 61.34];
-        const data67 = [58.41, 43.44, 68.89, 83.69, 86.87, 67.67, 72.70, 66.51];
-        const data68 = [64.46, 49.39, 76.10, 81.37, 89.06, 77.23, 79.59, 75.70];
-
-        // Calculate Averages
-        const calcAvg = (arr) => (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(2);
-        
-        const avg66 = calcAvg(data66);
-        const avg67 = calcAvg(data67);
-        const avg68 = calcAvg(data68);
-
-        // Display Averages
-        document.getElementById('avg66').innerText = avg66;
-        document.getElementById('avg67').innerText = avg67;
-        document.getElementById('avg68').innerText = avg68;
-
-        // Display Differences
-        document.getElementById('diff67').innerText = `↑ พัฒนาขึ้น ${(avg67 - avg66).toFixed(2)}%`;
-        document.getElementById('diff68').innerText = `↑ พัฒนาขึ้น ${(avg68 - avg67).toFixed(2)}%`;
-
-        const onetM3_School67 = [48.52, 25.33, 35.72, 29.11];
-        const onetM3_National67 = [48.93, 26.53, 34.22, 30.93];
-
-        const onetM6_School67 = [45.95, 22.65, 31.61, 43.34, 29.22];
-        const onetM6_National67 = [42.21, 21.76, 28.95, 35.77, 30.61];
-
-        // Charts initialization
-        new Chart(document.getElementById('lineChart'), {
-            type: 'line',
-            data: {
-                labels: ['2566', '2567', '2568'],
-                datasets: subjectLabels.map((label, i) => ({
-                    label: label,
-                    data: [data66[i], data67[i], data68[i]],
-                    borderColor: colors[i],
-                    backgroundColor: colors[i] + '20',
-                    borderWidth: 2.5,
-                    tension: 0.3
-                }))
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
-
-        new Chart(document.getElementById('alignmentChart'), {
-            type: 'bar',
-            data: {
-                labels: ['ภาษาไทย', 'คณิตศาสตร์', 'วิทยาศาสตร์', 'สังคมศึกษา', 'ภาษาอังกฤษ'],
-                datasets: [
-                    { label: 'ร้อยละ GPA เกรด 3 ขึ้นไป (ม.6)', data: [58.41, 43.44, 68.89, 83.69, 66.51], backgroundColor: '#6366f1CC', borderRadius: 5 },
-                    { label: 'คะแนนเฉลี่ย O-NET (ม.6)', data: [45.95, 22.65, 31.61, 43.34, 29.22], type: 'line', borderColor: '#ef4444', backgroundColor: '#ef4444', borderWidth: 3, pointRadius: 6 }
-                ]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
-
-        new Chart(document.getElementById('onetM3Chart'), {
-            type: 'bar',
-            data: {
-                labels: ['ภาษาไทย', 'คณิตศาสตร์', 'วิทยาศาสตร์', 'ภาษาอังกฤษ'],
-                datasets: [
-                    { label: 'โรงเรียน 67', data: onetM3_School67, backgroundColor: '#3b82f6' },
-                    { label: 'ประเทศ 67', data: onetM3_National67, backgroundColor: '#cbd5e1' }
-                ]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
-
-        new Chart(document.getElementById('onetM6Chart'), {
-            type: 'bar',
-            data: {
-                labels: ['ภาษาไทย', 'คณิตศาสตร์', 'วิทยาศาสตร์', 'สังคมศึกษา', 'ภาษาอังกฤษ'],
-                datasets: [
-                    { label: 'โรงเรียน 67', data: onetM6_School67, backgroundColor: '#10b981' },
-                    { label: 'ประเทศ 67', data: onetM6_National67, backgroundColor: '#cbd5e1' }
-                ]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
-    </script>
+  $('toggleLargeText').addEventListener('click',()=>{const on=document.body.classList.toggle('large-text');$('toggleLargeText').setAttribute('aria-pressed',String(on));$('toggleLargeText').textContent=on?'A− ขนาดปกติ':'A+ ขยายตัวอักษร';});
+  $('kind').addEventListener('change',updateTotals);$('reqDate').addEventListener('change',updateTotals);$('routeChoice').addEventListener('change',updateTotals);
+  // Test helpers are read-only and not displayed in the interface.
+  window.__procurementTest={getBase,beforeErrors,afterErrors,getAfter,bahtText,renderPreview,setStage,routeFor,deadlineFor,workingDaysAfter,docReceiptCover};
+  updateTotals();updatePaymentUI();updateDeadlineStatus();
+})();
+</script>
 </body>
 </html>
